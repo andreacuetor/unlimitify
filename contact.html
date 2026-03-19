@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — Unlimitify</title>
+<meta name="description" content="Tell us about your brand. We'll tell you how to dominate the US market."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#00ac69;--b:#001689;--bg:#050505;--s:#0f0f0f;--s2:#141414;--ts:#9a9a9a;--tm:#555;--grad:linear-gradient(90deg,#00ac69,#001689)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.logo span{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:14px;letter-spacing:.1em;color:#fff;white-space:nowrap}
+.nav-center{flex:1;display:flex;justify-content:center}
+.npill{display:flex;gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:4px}
+.npill a{font-size:12px;font-weight:600;color:rgba(255,255,255,.5);padding:6px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;letter-spacing:.04em;transition:all .2s}
+.npill a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.npill a.on{color:#fff;background:rgba(255,255,255,.1)}
+.ncta{background:var(--grad);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none;display:inline-block}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:20px;height:2px;background:rgba(255,255,255,.7);border-radius:2px}
+.mmenu{display:none;position:fixed;inset:0;background:rgba(5,5,5,.98);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mmenu.open{display:flex}
+.mmenu a{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:26px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.mmenu a:hover,.mmenu a.on{color:#fff}
+.mclose{position:absolute;top:22px;right:22px;color:rgba(255,255,255,.4);cursor:pointer;background:none;border:none;font-size:24px}
+@media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
+
+/* HERO */
+.hero{min-height:48vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 52px}
+.dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
+.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
+@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
+@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
+.hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(30px,5.5vw,68px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:480px;line-height:1.7}
+
+/* LAYOUT */
+section{padding:96px 48px;max-width:1280px;margin:0 auto}
+.ey{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+.st{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3.5vw,44px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;color:#fff;margin-bottom:20px}
+
+/* CONTACT GRID */
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start}
+
+/* LEFT PANEL */
+.info-block{margin-bottom:28px}
+.info-label{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.info-value{font-size:15px;color:var(--g);font-weight:500}
+.info-value.plain{color:var(--ts)}
+
+.stats-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px}
+.stat-chip{background:var(--s);border:1px solid #1a1a1a;border-radius:10px;padding:16px;text-align:center}
+.stat-chip-num{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-chip-label{font-size:10px;color:var(--tm);margin-top:5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+
+.trust-row{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ts)}
+.trust-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
+
+/* FORM */
+.form-wrap{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:36px}
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-field label{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.form-field input,.form-field select,.form-field textarea{background:var(--s2);border:1px solid #1e1e1e;border-radius:8px;padding:12px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-field input::placeholder,.form-field textarea::placeholder{color:var(--tm)}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--g)}
+.form-field select option{background:#0f0f0f;color:#fff}
+.form-field textarea{resize:vertical;min-height:100px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{background:var(--grad);color:#fff;border:none;padding:15px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:inherit;width:100%;margin-top:6px;transition:opacity .2s}
+.form-submit:hover{opacity:.85}
+.form-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-note{font-size:11px;color:var(--tm);text-align:center;margin-top:10px;line-height:1.6}
+.form-status{font-size:12px;text-align:center;margin-top:8px;min-height:18px;color:var(--g);font-weight:500}
+
+/* FOOTER */
+footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px;margin-top:0}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.fdesc{font-size:13px;color:var(--tm);line-height:1.75;margin-top:10px}
+.fcol h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);margin-bottom:14px}
+.fcol a{display:block;font-size:13px;color:var(--tm);margin-bottom:8px;text-decoration:none;transition:color .2s}
+.fcol a:hover{color:var(--g)}
+.fline{height:1px;background:var(--grad);margin-bottom:28px;border:none}
+.fbot{border-top:1px solid #111;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ANIMATIONS */
+.fu{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.fu.on{opacity:1;transform:none}
+
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+@media(max-width:768px){
+  section{padding:64px 20px}
+  footer{padding-left:20px;padding-right:20px}
+  .form-wrap{padding:24px 20px}
+  .form-row{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+  .stats-strip{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="index.html">
+    <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:24px;width:auto"/>
+    <span>UNLIMITIFY</span>
+  </a>
+  <div class="nav-center">
+    <div class="npill">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="results.html">Results</a>
+      <a href="contact.html" class="on">Contact</a>
+      <a href="careers.html">Careers</a>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <a class="ncta" href="contact.html">LET'S TALK</a>
+    <div class="hamburger" onclick="document.getElementById('mm').classList.add('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mm">
+  <button class="mclose" onclick="document.getElementById('mm').classList.remove('open')">✕</button>
+  <a href="index.html">HOME</a>
+  <a href="services.html">SERVICES</a>
+  <a href="about.html">ABOUT US</a>
+  <a href="results.html">RESULTS</a>
+  <a href="contact.html" class="on">CONTACT</a>
+  <a href="careers.html">CAREERS</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="dots"></div>
+  <div class="gl"></div>
+  <div class="gr"></div>
+  <div class="fu" id="h1w">
+    <h1>Let's Talk About<br/>Your Brand</h1>
+  </div>
+  <div class="fu" id="h2w">
+    <p>Tell us about your brand. We'll tell you exactly how to dominate the US market.</p>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="fu" id="main-section">
+  <div class="contact-grid">
+
+    <!-- LEFT: INFO -->
+    <div>
+      <div class="ey">Get in touch</div>
+      <h2 class="st">Ready to<br/>Scale?</h2>
+      <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:32px">No commitment. We'll analyze your brand's potential and show you exactly how we'd scale it in the US market — within 24 hours.</p>
+
+      <div class="info-block">
+        <div class="info-label">Email</div>
+        <div class="info-value">sales@unlimitify.com</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Markets</div>
+        <div class="info-value plain">USA · Mexico · Brazil · Canada · Spain · Argentina · Colombia</div>
+      </div>
+
+      <!-- COVERAGE MAP -->
+      <div style="margin-top:28px;background:var(--s);border:1px solid #1a1a1a;border-radius:14px;padding:20px 20px 12px">
+        <div style="font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Our Coverage</div>
+        <div id="cov-map"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+        <script>
+        (function(){
+          const countryIds={'840':'USA','124':'Canada','484':'Mexico','076':'Brazil','032':'Argentina','170':'Colombia','724':'Spain'};
+          const colors={'USA':'#00ac69','Canada':'#00ac69','Mexico':'#00ac69','Brazil':'#00ac69','Argentina':'#00ac69','Colombia':'#00ac69','Spain':'#4a7fff'};
+          const centroids={'USA':[-100,38],'Canada':[-96,60],'Mexico':[-102,24],'Brazil':[-52,-10],'Argentina':[-65,-35],'Colombia':[-74,4],'Spain':[-3.5,40.5]};
+          const labelOff={'USA':[8,-6],'Canada':[8,-7],'Mexico':[8,4],'Brazil':[8,4],'Argentina':[8,4],'Colombia':[8,-6],'Spain':[8,-6]};
+
+          const svg=d3.select('#cov-map').append('svg').attr('viewBox','0 0 560 280').attr('width','100%');
+          const proj=d3.geoNaturalEarth1().scale(95).translate([280,150]);
+          const path=d3.geoPath(proj);
+
+          d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world=>{
+            const features=topojson.feature(world,world.objects.countries).features;
+            svg.selectAll('path.c').data(features).join('path').attr('class','c').attr('d',path)
+              .attr('fill',d=>{const n=countryIds[d.id];return n?(colors[n]+'22'):'#111'})
+              .attr('stroke',d=>{const n=countryIds[d.id];return n?colors[n]:'#1e1e1e'})
+              .attr('stroke-width',d=>countryIds[d.id]?1:0.3);
+
+            Object.entries(centroids).forEach(([name,coords])=>{
+              const [cx,cy]=proj(coords);
+              const col=colors[name];
+              const [ox,oy]=labelOff[name];
+              svg.append('circle').attr('cx',cx).attr('cy',cy).attr('r',9).attr('fill',col).attr('fill-opacity',0.12).attr('stroke',col).attr('stroke-width',0.5).attr('stroke-opacity',0.35);
+              svg.append('circle').attr('cx',cx).attr('cy',cy).attr('r',3.5).attr('fill',col);
+              svg.append('text').attr('x',cx+ox).attr('y',cy+oy).attr('fill','#fff').attr('font-size','7.5px').attr('font-family','Inter,sans-serif').attr('font-weight','600').attr('letter-spacing','0.03em').text(name);
+            });
+
+            const lg=svg.append('g').attr('transform','translate(16,268)');
+            lg.append('circle').attr('cx',5).attr('cy',0).attr('r',3.5).attr('fill','#00ac69');
+            lg.append('text').attr('x',12).attr('y',4).attr('fill','#555').attr('font-size','8px').attr('font-family','Inter,sans-serif').text('Americas');
+            lg.append('circle').attr('cx',78).attr('cy',0).attr('r',3.5).attr('fill','#4a7fff');
+            lg.append('text').attr('x',85).attr('y',4).attr('fill','#555').attr('font-size','8px').attr('font-family','Inter,sans-serif').text('Europe');
+            lg.append('text').attr('x',430).attr('y',4).attr('fill','#333').attr('font-size','8px').attr('font-family','Inter,sans-serif').text('7 markets · 3 continents');
+          });
+        })();
+        </script>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat-chip">
+          <div class="stat-chip-num">50+</div>
+          <div class="stat-chip-label">Brands Scaled</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-num">$150M+</div>
+          <div class="stat-chip-label">Revenue Managed</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-num">14</div>
+          <div class="stat-chip-label">Active Clients</div>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item"><div class="trust-dot"></div>No commitment required</div>
+        <div class="trust-item"><div class="trust-dot"></div>Free brand audit included</div>
+        <div class="trust-item"><div class="trust-dot"></div>Direct line to our founders</div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-wrap">
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_subject" value="New Growth Audit Request — Unlimitify"/>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="John Smith" required/>
+          </div>
+          <div class="form-field">
+            <label>Company Name</label>
+            <input type="text" name="company" placeholder="Your Brand Inc." required/>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="john@yourbrand.com" required/>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>Target Market</label>
+            <select name="market" required>
+              <option value="" disabled selected>Select…</option>
+              <option>USA</option>
+              <option>Mexico</option>
+              <option>Brazil</option>
+              <option>Canada</option>
+              <option>Spain</option>
+              <option>Argentina</option>
+              <option>Colombia</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Monthly Revenue</label>
+            <select name="revenue">
+              <option value="" disabled selected>Select…</option>
+              <option>Under $10K</option>
+              <option>$10K – $50K</option>
+              <option>$50K – $200K</option>
+              <option>$200K – $1M</option>
+              <option>$1M+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Main Challenge</label>
+          <textarea name="message" placeholder="Tell us about your brand and what's holding back your growth…" required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="form-btn">GET MY FREE GROWTH AUDIT</button>
+        <p class="form-status" id="form-status"></p>
+        <p class="form-note">No commitment · Goes directly to sales@unlimitify.com</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <hr class="fline"/>
+  <div class="fg">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:20px;width:auto"/>
+        <span style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em">UNLIMITIFY</span>
+      </div>
+      <p class="fdesc">The bridge between your brand and 330 million consumers. We engineer eCommerce ecosystems that dominate the US market.</p>
+    </div>
+    <div class="fcol">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="results.html">Results</a>
+      <a href="contact.html">Contact</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <div class="fcol">
+      <h4>Contact</h4>
+      <span style="font-size:13px;color:var(--g)">sales@unlimitify.com</span>
+      <p style="font-size:12px;color:var(--tm);margin-top:8px;line-height:1.7">USA · Mexico · Brazil · Canada</p>
+    </div>
+  </div>
+  <div class="fbot">
+    <span style="font-size:12px;color:var(--tm)">© 2026 Unlimitify. All rights reserved.</span>
+    <span style="font-size:12px;color:var(--tm)">Designed by Unlimitify</span>
+  </div>
+</footer>
+
+<script>
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('form-btn');
+  const status=document.getElementById('form-status');
+  const form=document.getElementById('contact-form');
+  btn.textContent='Sending…';
+  btn.disabled=true;
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){
+      btn.textContent='✓ Sent! We\'ll be in touch within 24 hours.';
+      btn.style.background='#00ac69';
+      status.textContent='Your request has been sent to sales@unlimitify.com';
+      form.reset();
+    } else throw new Error();
+  } catch{
+    btn.textContent='GET MY FREE GROWTH AUDIT';
+    btn.disabled=false;
+    status.style.color='#ff6b6b';
+    status.textContent='Something went wrong — please email sales@unlimitify.com directly.';
+  }
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('sc',scrollY>40);
+  triggerFades();
+});
+
+function triggerFades(){
+  document.querySelectorAll('.fu:not(.on)').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
+  });
+}
+
+['h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
+setTimeout(triggerFades,300);
+</script>
+</body>
+</html>

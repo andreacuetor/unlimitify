@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Results — Unlimitify</title>
+<meta name="description" content="Real results from real brands. See how Unlimitify engineers eCommerce dominance in the US market."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#00ac69;--b:#001689;--bg:#050505;--s:#0f0f0f;--s2:#141414;--ts:#9a9a9a;--tm:#555;--grad:linear-gradient(90deg,#00ac69,#001689)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.logo span{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:14px;letter-spacing:.1em;color:#fff;white-space:nowrap}
+.nav-center{flex:1;display:flex;justify-content:center}
+.npill{display:flex;gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:4px}
+.npill a{font-size:12px;font-weight:600;color:rgba(255,255,255,.5);padding:6px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;letter-spacing:.04em;transition:all .2s}
+.npill a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.npill a.on{color:#fff;background:rgba(255,255,255,.1)}
+.ncta{background:var(--grad);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none;display:inline-block}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:20px;height:2px;background:rgba(255,255,255,.7);border-radius:2px}
+.mmenu{display:none;position:fixed;inset:0;background:rgba(5,5,5,.98);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mmenu.open{display:flex}
+.mmenu a{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:26px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.mmenu a:hover,.mmenu a.on{color:#fff}
+.mclose{position:absolute;top:22px;right:22px;color:rgba(255,255,255,.4);cursor:pointer;background:none;border:none;font-size:24px}
+@media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
+
+/* HERO */
+.hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 60px}
+.dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
+.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
+@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
+@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
+.hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:520px;line-height:1.7}
+
+/* LAYOUT */
+section{padding:96px 48px;max-width:1280px;margin:0 auto}
+.fw{max-width:100%;border-top:1px solid #111;border-bottom:1px solid #111}
+.fi{max-width:1280px;margin:0 auto;padding:96px 48px}
+.ey{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+.st{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;color:#fff;margin-bottom:20px}
+.ss{font-size:16px;color:var(--ts);line-height:1.7;max-width:600px;margin-bottom:40px}
+
+/* BUTTONS */
+.bp{background:var(--grad);color:#fff;border:none;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:opacity .2s;text-decoration:none;display:inline-block}
+.bp:hover{opacity:.85}
+.bp.lg{font-size:15px;padding:17px 38px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat-card{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:24px}
+.stat-num{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3vw,40px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{font-size:11px;color:var(--tm);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
+
+/* CASE STUDY TABS */
+.cs-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.cs-tab{padding:9px 20px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #1a1a1a;color:var(--tm);background:var(--s);transition:all .25s;font-family:inherit}
+.cs-tab.active{background:var(--grad);color:#fff;border-color:transparent}
+
+/* CASE STUDY CARD */
+.cs-panel{display:none}.cs-panel.active{display:block}
+.cs-card{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:36px;border-left:3px solid var(--g)}
+.cs-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;gap:20px;flex-wrap:wrap}
+.cs-product{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:24px;color:#fff}
+.cs-client{font-size:13px;color:var(--ts);margin-top:5px}
+.cs-badge{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cs-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
+.cs-phase{background:var(--s2);border:1px solid #1a1a1a;border-radius:10px;padding:18px;transition:border-color .3s,transform .2s}
+.cs-phase:hover{border-color:var(--g);transform:translateY(-2px)}
+.cs-phase-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:6px}
+.cs-phase-label.blue{color:#7a9fff}
+.cs-phase-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:14px;color:#fff;margin-bottom:6px}
+.cs-phase-body{font-size:12px;color:var(--ts);line-height:1.55}
+.cs-chart-wrap{background:var(--s2);border-radius:10px;padding:20px;border:1px solid #1a1a1a}
+.cs-chart-label{font-size:11px;color:var(--tm);margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.testi-card{background:var(--s);border:1px solid #1a1a1a;border-radius:14px;padding:28px;border-left:3px solid var(--g)}
+.testi-quote{font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.testi-name{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:14px;color:#fff}
+.testi-co{font-size:12px;color:var(--g);font-weight:500;margin-top:2px}
+
+/* KPI BARS */
+.kpi-wrap{margin-bottom:14px}
+.kpi-label{display:flex;justify-content:space-between;font-size:13px;color:var(--ts);margin-bottom:7px}
+.kpi-label span:last-child{color:var(--g);font-weight:600}
+.kpi-track{background:#1a1a1a;border-radius:100px;height:4px}
+.kpi-fill{height:4px;border-radius:100px;background:var(--grad);width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+
+/* FINAL CTA */
+.fcta{text-align:center;padding:110px 48px;position:relative;overflow:hidden;background:var(--s);border-top:1px solid #111}
+.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,4vw,50px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:700px;margin:0 auto 16px;line-height:1.05}
+.fcta p{font-size:17px;color:var(--ts);margin-bottom:32px}
+
+/* FOOTER */
+footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.fdesc{font-size:13px;color:var(--tm);line-height:1.75;margin-top:10px}
+.fcol h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);margin-bottom:14px}
+.fcol a{display:block;font-size:13px;color:var(--tm);margin-bottom:8px;text-decoration:none;transition:color .2s}
+.fcol a:hover{color:var(--g)}
+.fline{height:1px;background:var(--grad);margin-bottom:28px;border:none}
+.fbot{border-top:1px solid #111;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ANIMATIONS */
+.fu{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.fu.on{opacity:1;transform:none}
+
+@media(max-width:768px){
+  section,.fi,.fcta,footer{padding-left:20px;padding-right:20px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr}
+  .cs-phases{grid-template-columns:repeat(2,1fr)}
+  .fg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="index.html">
+    <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:24px;width:auto"/>
+    <span>UNLIMITIFY</span>
+  </a>
+  <div class="nav-center">
+    <div class="npill">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="results.html" class="on">Results</a>
+      <a href="contact.html">Contact</a>
+      <a href="careers.html">Careers</a>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <a class="ncta" href="contact.html">LET'S TALK</a>
+    <div class="hamburger" onclick="document.getElementById('mm').classList.add('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mm">
+  <button class="mclose" onclick="document.getElementById('mm').classList.remove('open')">✕</button>
+  <a href="index.html">HOME</a>
+  <a href="services.html">SERVICES</a>
+  <a href="about.html">ABOUT US</a>
+  <a href="results.html" class="on">RESULTS</a>
+  <a href="contact.html">CONTACT</a>
+  <a href="careers.html">CAREERS</a>
+  <a class="bp" href="contact.html" style="margin-top:8px">LET'S TALK</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="dots"></div>
+  <div class="gl"></div>
+  <div class="gr"></div>
+  <div class="fu" id="h1w"><h1>Data Driven<br/>Dominance</h1></div>
+  <div class="fu" id="h2w"><p>We don't just deliver reports. We deliver returns.</p></div>
+</div>
+
+<!-- IMPACT COUNTER -->
+<div class="fw" style="background:var(--s)">
+  <div class="fi fu">
+    <div class="ey">The impact counter</div>
+    <h2 class="st" style="margin-bottom:36px">Proven at Scale</h2>
+    <div class="stats-grid" style="margin-bottom:48px">
+      <div class="stat-card"><div class="stat-num" data-target="150" data-sfx="M+" data-pfx="$">$0</div><div class="stat-label">Managed Revenue</div></div>
+      <div class="stat-card"><div class="stat-num" data-target="4.5" data-sfx="M+" data-dec="1">0</div><div class="stat-label">Ad Spend Managed</div></div>
+      <div class="stat-card"><div class="stat-num" data-target="200" data-sfx="M">0</div><div class="stat-label">Consumers Reached</div></div>
+      <div class="stat-card"><div class="stat-num" data-target="14" data-sfx="">0</div><div class="stat-label">Active Clients</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+      <div>
+        <div class="kpi-wrap"><div class="kpi-label"><span>Average ROAS Increase</span><span>60–80%</span></div><div class="kpi-track"><div class="kpi-fill" data-w="75"></div></div></div>
+        <div class="kpi-wrap"><div class="kpi-label"><span>Operational Efficiency Gain</span><span>80%</span></div><div class="kpi-track"><div class="kpi-fill" data-w="80"></div></div></div>
+        <div class="kpi-wrap"><div class="kpi-label"><span>Market Penetration Rate</span><span>80%</span></div><div class="kpi-track"><div class="kpi-fill" data-w="80"></div></div></div>
+        <div class="kpi-wrap"><div class="kpi-label"><span>Avg. Revenue Growth (60 days)</span><span>139%</span></div><div class="kpi-track"><div class="kpi-fill" data-w="90"></div></div></div>
+      </div>
+      <div style="background:var(--s2);border:1px solid #1a1a1a;border-radius:14px;padding:28px;border-left:3px solid var(--g)">
+        <p style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(16px,2vw,22px);color:#fff;line-height:1.4;margin-bottom:16px">"Their data driven strategy and listing optimization delivered consistent, sustainable growth in online sales."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="testi-avatar" style="width:36px;height:36px;font-size:12px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;color:#fff;flex-shrink:0">AB</div>
+          <div>
+            <div style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;color:#fff">Adam Berk</div>
+            <div style="font-size:11px;color:var(--g);margin-top:1px">Menper</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<section class="fu">
+  <div class="ey">Strategic triumphs</div>
+  <h2 class="st">Real-World Applications<br/>of the Growth Loop</h2>
+  <p class="ss">Discover how we've turned stagnant growth into dominant market share.</p>
+  <div class="cs-tabs" id="cs-tabs"></div>
+  <div id="cs-panels"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="fw" style="background:var(--s)">
+  <div class="fi fu">
+    <div class="ey">Testimonials</div>
+    <h2 class="st">Customer Reviews</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">"From day zero working with the Unlimitify team, our sales have been on a steady rise. Their expertise is clear when we look at the end of month numbers, and their support truly feels like having a real extension of our own team!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">EO</div>
+          <div><div class="testi-name">Evelyn Orduz</div><div class="testi-co">De Mi País</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Unlimitify is a vital partner in our U.S. marketplace expansion. Their data driven strategy and listing optimization streamlined our operations, reduced headaches, and delivered consistent, sustainable growth in online sales."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AB</div>
+          <div><div class="testi-name">Adam Berk</div><div class="testi-co">Menper</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="fcta fu">
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(0,172,105,.1) 0%,transparent 65%);pointer-events:none"></div>
+  <h2>Are You Ready for<br/>These Results?</h2>
+  <p>Stop guessing. Start scaling.</p>
+  <a class="bp lg" href="contact.html">REQUEST YOUR GROWTH AUDIT →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <hr class="fline"/>
+  <div class="fg">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:20px;width:auto"/>
+        <span style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em">UNLIMITIFY</span>
+      </div>
+      <p class="fdesc">The bridge between your brand and 330 million consumers. We engineer eCommerce ecosystems that dominate the US market.</p>
+    </div>
+    <div class="fcol">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="results.html">Results</a>
+      <a href="contact.html">Contact</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <div class="fcol">
+      <h4>Contact</h4>
+      <span style="font-size:13px;color:var(--g)">sales@unlimitify.com</span>
+      <p style="font-size:12px;color:var(--tm);margin-top:8px;line-height:1.7">USA · Mexico · Brazil · Canada</p>
+    </div>
+  </div>
+  <div class="fbot">
+    <span style="font-size:12px;color:var(--tm)">© 2026 Unlimitify. All rights reserved.</span>
+    <span style="font-size:12px;color:var(--tm)">Designed by Unlimitify</span>
+  </div>
+</footer>
+
+<script>
+const CASES=[
+  {
+    tab:'Rábano Yodado®',
+    product:'Rábano Yodado®',
+    client:'Portfolio Transformation — Menper Group',
+    result:'139% Revenue Surge',
+    phases:[
+      {label:'Stagnation',title:'$1.5K/week ceiling',body:'Undervalued at $5.19. Single-SKU dependency limiting scale.',blue:false},
+      {label:'The Pivot',title:'Multipacks + Overhaul',body:'High-value multipacks. Structured price increases for margin health.',blue:false},
+      {label:'Execution',title:'AOV $6 → $14.5',body:'+140% conversion boost. Efficient customer acquisition.',blue:false},
+      {label:'Dominance',title:'Top 5 Brand',body:'139% revenue surge in 60 days. Top 5 brand in Menper Group.',blue:true}
+    ],
+    chart:[1500,1700,2000,2400,3000,3800,4600,5400,6200,7100,8200,9400,10500]
+  },
+  {
+    tab:'US Market Entry',
+    product:'US Market Entry',
+    client:'CPG Brand — Zero to Launch',
+    result:'220% ROAS Improvement',
+    phases:[
+      {label:'Entry',title:'Zero US presence',body:'No Amazon account, no US listings, no localized creative.',blue:false},
+      {label:'Architecture',title:'Full ecosystem build',body:'Account setup, A+ content, brand store, keyword strategy.',blue:false},
+      {label:'Launch',title:'$0 → $45K/month',body:'Paid media deployed. ROAS of 4.2x in first 90 days.',blue:false},
+      {label:'Scale',title:'Category Leader',body:'220% ROAS improvement. Top-3 organic rank achieved.',blue:true}
+    ],
+    chart:[0,600,2000,3400,5600,8400,12500,18500,25000,32000,39000,45000,48000]
+  },
+  {
+    tab:'Hispanic Expansion',
+    product:'Hispanic Market Expansion',
+    client:'Category Domination Strategy',
+    result:'3.1x Revenue in 90 Days',
+    phases:[
+      {label:'Audit',title:'Category opportunity',body:'$2M+ TAM identified with weak incumbents.',blue:false},
+      {label:'Strategy',title:'Where to Play',body:"'Where to Play / How to Win' framework deployed.",blue:false},
+      {label:'Execution',title:'Dominate the niche',body:'Cultural authenticity drove exceptional conversion.',blue:false},
+      {label:'Result',title:'3.1x Revenue',body:'Category rank #1 achieved in 90 days.',blue:true}
+    ],
+    chart:[8000,8800,9800,11500,14000,16800,20500,23500,26000,29000,32500,36000,39000]
+  },
+  {
+    tab:'Back-End Optimization',
+    product:'Back-End Optimization',
+    client:'Margin Recovery & Efficiency',
+    result:'80% Efficiency Gain',
+    phases:[
+      {label:'Problem',title:'Margin erosion',body:'Chargeback rate 4.2%. Overhead consuming 35% of revenue.',blue:false},
+      {label:'Diagnosis',title:'Full ops audit',body:'Three major leakage points identified and mapped.',blue:false},
+      {label:'Fix',title:'Infrastructure rebuilt',body:'Chargeback recovery. Resource planning automation.',blue:false},
+      {label:'Result',title:'80% Efficiency',body:'Chargeback: 4.2%→0.4%. Overhead: 35%→7%.',blue:true}
+    ],
+    chart:[20000,21000,20500,22500,25000,27500,30500,33500,36500,39500,42500,45000,47500]
+  }
+];
+
+function buildChart(data,idx){
+  const W=460,H=72,pd=8,mn=Math.min(...data),mx=Math.max(...data);
+  const pts=data.map((v,j)=>({
+    x:pd+(j/(data.length-1))*(W-pd*2),
+    y:H-pd-((v-mn)/(mx-mn||1))*(H-pd*2)
+  }));
+  const poly=pts.map(p=>`${p.x},${p.y}`).join(' ');
+  const fill=`${pts[0].x},${H-pd} `+pts.map(p=>`${p.x},${p.y}`).join(' ')+` ${pts[pts.length-1].x},${H-pd}`;
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:68px" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="cg${idx}" x1="0" y1="0" x2="${W}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00ac69"/><stop offset="100%" stop-color="#001689"/></linearGradient>
+      <linearGradient id="cgf${idx}" x1="0" y1="0" x2="0" y2="${H}" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00ac69" stop-opacity=".18"/><stop offset="100%" stop-color="#001689" stop-opacity=".02"/></linearGradient>
+    </defs>
+    <polygon points="${fill}" fill="url(#cgf${idx})"/>
+    <polyline points="${poly}" fill="none" stroke="url(#cg${idx})" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+const tabs=document.getElementById('cs-tabs');
+const panels=document.getElementById('cs-panels');
+
+CASES.forEach((c,i)=>{
+  // tab
+  const tab=document.createElement('button');
+  tab.className='cs-tab'+(i===0?' active':'');
+  tab.textContent=c.tab;
+  tab.onclick=()=>{
+    tabs.querySelectorAll('.cs-tab').forEach(t=>t.classList.remove('active'));
+    panels.querySelectorAll('.cs-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('csp'+i).classList.add('active');
+  };
+  tabs.appendChild(tab);
+
+  // panel
+  const panel=document.createElement('div');
+  panel.className='cs-panel'+(i===0?' active':'');
+  panel.id='csp'+i;
+  panel.innerHTML=`<div class="cs-card">
+    <div class="cs-header">
+      <div>
+        <div class="cs-product">${c.product}</div>
+        <div class="cs-client">${c.client}</div>
+      </div>
+      <div class="cs-badge">${c.result}</div>
+    </div>
+    <div class="cs-phases">
+      ${c.phases.map(p=>`<div class="cs-phase">
+        <div class="cs-phase-label${p.blue?' blue':''}">${p.label}</div>
+        <div class="cs-phase-title">${p.title}</div>
+        <div class="cs-phase-body">${p.body}</div>
+      </div>`).join('')}
+    </div>
+    <div class="cs-chart-wrap">
+      <div class="cs-chart-label">Revenue trajectory</div>
+      ${buildChart(c.chart,i)}
+    </div>
+  </div>`;
+  panels.appendChild(panel);
+});
+
+// Scroll & animations
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('sc',scrollY>40);
+  triggerAll();
+});
+
+function triggerFades(){
+  document.querySelectorAll('.fu:not(.on)').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
+  });
+}
+
+function triggerCounters(){
+  document.querySelectorAll('.stat-num[data-target]:not([data-done])').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-40){
+      el.dataset.done=1;
+      const tgt=parseFloat(el.dataset.target),sfx=el.dataset.sfx||'',pfx=el.dataset.pfx||'',dec=el.dataset.dec==='1';
+      const dur=1800,t0=performance.now();
+      const step=now=>{
+        const p=Math.min((now-t0)/dur,1),e=p<.5?2*p*p:-1+(4-2*p)*p,v=tgt*e;
+        el.textContent=pfx+(dec?v.toFixed(1):Math.floor(v))+sfx;
+        if(p<1)requestAnimationFrame(step);
+        else el.textContent=pfx+(dec?tgt.toFixed(1):tgt)+sfx;
+      };
+      requestAnimationFrame(step);
+    }
+  });
+}
+
+function triggerKPIs(){
+  document.querySelectorAll('.kpi-fill:not([data-done])').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-40){
+      el.style.width=el.dataset.w+'%';
+      el.dataset.done=1;
+    }
+  });
+}
+
+function triggerAll(){triggerFades();triggerCounters();triggerKPIs();}
+
+['h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
+setTimeout(triggerAll,300);
+</script>
+</body>
+</html>
