@@ -62,7 +62,8 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .founder-card:hover{transform:translateY(-4px);border-color:#252525}
 .founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .5s}
 .founder-card:hover::before,.founder-card.expanded::before{transform:scaleX(1)}
-.founder-img-wrap{height:300px;overflow:hidden;background:#0a0a0a;display:flex;align-items:center;justify-content:center;position:relative}
+.founder-img-wrap{height:360px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,#030f08 0%,#051a2e 50%,#020d05 100%)}
+.founder-img-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(0,172,105,.15) 0%,transparent 60%),radial-gradient(ellipse at 75% 30%,rgba(0,22,137,.18) 0%,transparent 55%);pointer-events:none}
 .founder-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s}
 .founder-card:hover .founder-img-wrap img{transform:scale(1.04)}
 .founder-initials{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:64px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -199,7 +200,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
       <!-- Nicolás -->
       <div class="founder-card" id="fc-0" onclick="toggleFounder(0)">
         <div class="founder-img-wrap">
-          <img id="nc-photo" alt="Nicolás Cardona" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
+          <img id="nc-photo" alt="Nicolás Cardona" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:relative;z-index:1"/>
           <div style="position:absolute;top:14px;left:14px">
             <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:16px;width:auto"/>
           </div>
@@ -215,7 +216,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
       <!-- Lucero -->
       <div class="founder-card" id="fc-1" onclick="toggleFounder(1)">
         <div class="founder-img-wrap">
-          <img src="./images/lucero_cofounder.jpg" alt="Lucero Huerta" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
+          <img src="./images/Lucero_cofounder_2.png" alt="Lucero Huerta" style="width:100%;height:100%;object-fit:cover;object-position:center center;position:relative;z-index:1"/>
           <div style="position:absolute;top:14px;left:14px">
             <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:16px;width:auto"/>
           </div>
@@ -338,7 +339,7 @@ if(ncImg){
     const wrap=this.closest('.founder-img-wrap');
     if(wrap){const d=document.createElement('div');d.className='founder-initials';d.textContent='NC';wrap.appendChild(d);}
   };
-  ncImg.src='./images/Nicolas_cofounder.jpeg';
+  ncImg.src='./images/Nicolas_cofounder_2.png';
 }
 
 // Scroll & fade
