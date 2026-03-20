@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>About Us — Unlimitify</title>
-<meta name="description" content="Meet the founders behind Unlimitify — the team engineering eCommerce ecosystems that dominate the US market."/>
+<title>Unlimitify — US eCommerce Market Expansion</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -22,7 +21,7 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 .npill a{font-size:12px;font-weight:600;color:rgba(255,255,255,.5);padding:6px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;letter-spacing:.04em;transition:all .2s}
 .npill a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .npill a.on{color:#fff;background:rgba(255,255,255,.1)}
-.ncta{background:var(--grad);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none;display:inline-block}
+.ncta{background:var(--grad);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none;display:inline-block;flex-shrink:0}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .hamburger span{display:block;width:20px;height:2px;background:rgba(255,255,255,.7);border-radius:2px}
 .mmenu{display:none;position:fixed;inset:0;background:rgba(5,5,5,.98);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:28px}
@@ -33,17 +32,35 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 @media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
 
 /* HERO */
-.hero{min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:80px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
-.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
+.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.18) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
+.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.2) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
 @keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
 @keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
-.hero-logo{width:min(180px,42vw);margin-bottom:28px}
-.hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,6vw,72px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:18px}
-.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:520px;line-height:1.7}
+.hero-logo{width:min(520px,86vw);margin-bottom:44px}
+.hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:20px}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:540px;line-height:1.7;margin-bottom:36px}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 
-/* LAYOUT */
+/* BUTTONS */
+.bp{background:var(--grad);color:#fff;border:none;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:opacity .2s;text-decoration:none;display:inline-block}
+.bp:hover{opacity:.85}
+.bp.sm{font-size:13px;padding:12px 24px}
+.bp.lg{font-size:15px;padding:17px 38px}
+.bg{background:transparent;color:#fff;border:none;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;position:relative;font-family:inherit;display:inline-block;text-decoration:none}
+.bg::before{content:'';position:absolute;inset:0;border-radius:100px;padding:1.5px;background:var(--grad);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+
+/* MARQUEE */
+.mq{background:#0a0a0a;border-top:1px solid #111;border-bottom:1px solid #111;padding:32px 0;overflow:hidden}
+.mqt{display:flex;animation:mq 35s linear infinite;white-space:nowrap;align-items:center}
+.mqt:hover{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mqi{flex-shrink:0;padding:0 52px;border-right:1px solid rgba(255,255,255,.06);opacity:.75;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
+.mqi:hover{opacity:1}
+.mqi img{height:72px;width:auto;max-width:180px;object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
+
+/* SECTIONS */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .fw{max-width:100%;border-top:1px solid #111;border-bottom:1px solid #111}
 .fi{max-width:1280px;margin:0 auto;padding:96px 48px}
@@ -51,61 +68,82 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .st{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;color:#fff;margin-bottom:20px}
 .ss{font-size:16px;color:var(--ts);line-height:1.7;max-width:600px;margin-bottom:40px}
 
-/* BUTTONS */
-.bp{background:var(--grad);color:#fff;border:none;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:opacity .2s;text-decoration:none;display:inline-block}
-.bp:hover{opacity:.85}
-.bp.lg{font-size:15px;padding:17px 38px}
-
-/* FOUNDERS */
-.founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:860px;margin:0 auto}
-.founder-card{background:var(--s);border:1px solid #1a1a1a;border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s;cursor:pointer;position:relative}
-.founder-card:hover{transform:translateY(-4px);border-color:#252525}
-.founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .5s}
-.founder-card:hover::before,.founder-card.expanded::before{transform:scaleX(1)}
-.founder-img-wrap{height:300px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,#030f08 0%,#051a2e 50%,#020d05 100%)}
-.founder-img-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(0,172,105,.15) 0%,transparent 60%),radial-gradient(ellipse at 75% 30%,rgba(0,22,137,.18) 0%,transparent 55%);pointer-events:none}
-.founder-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s}
-.founder-card:hover .founder-img-wrap img{transform:scale(1.04)}
-.founder-initials{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:64px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.founder-info{padding:22px 24px}
-.founder-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;color:#fff;letter-spacing:.04em;margin-bottom:4px}
-.founder-role{font-size:12px;color:var(--g);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.founder-detail{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.founder-card.expanded .founder-detail{max-height:200px}
-.founder-bio{font-size:13px;color:var(--ts);line-height:1.7;margin-top:14px;padding-top:14px;border-top:1px solid #1a1a1a}
-.founder-hint{font-size:11px;color:var(--tm);text-align:center;margin-top:16px;letter-spacing:.04em}
-
-/* STORY TIMELINE */
-.story-block{margin-bottom:48px;position:relative;padding-left:32px}
-.story-block::before{content:'';position:absolute;left:0;top:10px;width:2px;height:calc(100% + 8px);background:linear-gradient(180deg,var(--g),var(--b))}
-.story-block:last-child::before{height:calc(100% - 10px)}
-.story-block::after{content:'';position:absolute;left:-5px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--g);box-shadow:0 0 12px rgba(0,172,105,.5)}
-.story-year{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(36px,5vw,64px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
-.story-body{font-size:16px;color:var(--ts);line-height:1.8}
-.story-body strong{color:#fff;font-weight:600}
-.story-quote{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(16px,2.2vw,22px);color:#fff;line-height:1.4;margin:48px 0;padding:24px 28px;border-left:3px solid var(--g);background:rgba(0,172,105,.05);border-radius:0 12px 12px 0}
-
 /* STATS */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.stat-card{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:24px}
-.stat-num{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3vw,40px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.stat-label{font-size:11px;color:var(--tm);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sc2{grid-template-columns:repeat(2,1fr)}
+.scard{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:24px}
+.snum{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3vw,42px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.slbl{font-size:11px;color:var(--tm);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
 
-/* DIFF CARDS */
-.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.diff-card{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:26px}
-.diff-n{font-family:'Inter Tight',sans-serif;font-size:44px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.diff-t{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;color:#fff;margin:8px 0 6px}
-.diff-b{font-size:13px;color:var(--ts);line-height:1.65}
+/* KPI */
+.kpi{margin-bottom:14px}
+.kpit{display:flex;justify-content:space-between;font-size:13px;color:var(--ts);margin-bottom:7px}
+.kpib{background:#1a1a1a;border-radius:100px;height:5px}
+.kpif{height:5px;border-radius:100px;background:var(--grad);width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
 
-/* PROMISE BANNER */
-.promise{text-align:center;padding:80px 48px;position:relative;overflow:hidden}
-.promise-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,172,105,.1) 0%,transparent 65%);pointer-events:none}
-.promise p{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(20px,3vw,36px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;max-width:700px;margin:0 auto;line-height:1.25}
+/* BADGES */
+.mkts{display:flex;gap:8px;flex-wrap:wrap}
+.mkt{display:flex;align-items:center;gap:6px;background:var(--s);border:1px solid #1a1a1a;border-radius:100px;padding:6px 14px;font-size:13px;font-weight:500}
+.b50{display:inline-flex;align-items:center;gap:12px;padding:16px 24px;border-radius:14px;position:relative;margin-top:28px}
+.b50::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1.5px;background:var(--grad);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.b50n{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,3vw,42px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.b50t{font-size:14px;color:var(--ts);line-height:1.4}
+
+/* SERVICE CARDS */
+.svgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svcard{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:28px;position:relative;overflow:hidden;transition:transform .25s,border-color .3s;text-decoration:none;display:block}
+.svcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.svcard:hover::before{transform:scaleX(1)}
+.svcard:hover{transform:translateY(-3px);border-color:#222}
+.svico{width:38px;height:38px;margin-bottom:16px}
+.svcard h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:#fff;margin-bottom:8px}
+.svcard p{font-size:14px;color:var(--ts);line-height:1.65}
+
+/* LOOP */
+.ll{display:grid;grid-template-columns:210px 1fr 270px;gap:36px;align-items:center}
+.spr{display:flex;flex-direction:column}
+.sp{display:flex;align-items:center;gap:12px;padding:7px 0;cursor:pointer;position:relative}
+.sp:not(:last-child)::after{content:'';position:absolute;left:16px;top:42px;width:2px;height:22px;background:#1a2a1a;z-index:0}
+.spd{width:33px;height:33px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;transition:all .3s;border:2px solid #1a2a1a;color:var(--tm);background:var(--bg);z-index:1;position:relative}
+.sp.g .spd{border-color:var(--g);color:var(--g)}
+.sp.b .spd{border-color:#3b5bff;color:#7a9fff}
+.sp.on.g .spd{background:var(--g);color:#fff;box-shadow:0 0 18px rgba(0,172,105,.45)}
+.sp.on.b .spd{background:#001689;color:#fff;box-shadow:0 0 18px rgba(0,22,137,.5)}
+.spl{font-size:13px;color:var(--tm);font-weight:500;transition:color .3s}
+.sp.on .spl{color:#fff}
+.lpop{background:var(--s);border:1px solid #1a2a1a;border-radius:14px;padding:22px;opacity:0;transform:translateY(10px);transition:all .35s cubic-bezier(.4,0,.2,1);min-height:150px}
+.lpop.on{opacity:1;transform:translateY(0)}
+.lpe{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.lpe.g{color:var(--g)}.lpe.b{color:#7a9fff}
+.lpt{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:8px}
+.lpb{font-size:13px;color:var(--ts);line-height:1.65}
+
+/* CASE STUDY */
+.cscard{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:32px;border-left:3px solid var(--g)}
+.cshead{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;gap:20px;flex-wrap:wrap}
+.csprod{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;color:#fff}
+.cscli{font-size:13px;color:var(--ts);margin-top:4px}
+.csbadge{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:20px}
+.csphases{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.csph{background:var(--s2);border:1px solid #1a1a1a;border-radius:10px;padding:16px;transition:border-color .3s,transform .2s}
+.csph:hover{border-color:var(--g);transform:translateY(-2px)}
+.csph-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:6px}
+.csph-t{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:14px;color:#fff;margin-bottom:5px}
+.csph-b{font-size:12px;color:var(--ts);line-height:1.55}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.tcard{background:var(--s);border:1px solid #1a1a1a;border-radius:14px;padding:28px;border-left:3px solid var(--g)}
+.tqm{font-family:'Inter Tight',sans-serif;font-size:52px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.75;margin-bottom:14px;display:block}
+.tq{font-size:15px;color:var(--ts);line-height:1.8;margin-bottom:22px}
+.tau{display:flex;align-items:center;gap:12px}
+.tav{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.tn{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;color:#fff}
+.tc{font-size:12px;color:var(--g);font-weight:500}
 
 /* FINAL CTA */
 .fcta{text-align:center;padding:110px 48px;position:relative;overflow:hidden;background:var(--s);border-top:1px solid #111}
-.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,4vw,50px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:700px;margin:0 auto 16px;line-height:1.05}
+.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,4vw,50px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:760px;margin:0 auto 16px;line-height:1.05}
 .fcta p{font-size:17px;color:var(--ts);margin-bottom:32px}
 
 /* FOOTER */
@@ -118,18 +156,29 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 .fline{height:1px;background:var(--grad);margin-bottom:28px;border:none}
 .fbot{border-top:1px solid #111;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-/* ANIMATIONS */
+/* LOOP DOTS */
+.ldot{position:absolute;width:14px;height:14px;border-radius:50%;background:#00ac69;box-shadow:0 0 0 4px rgba(0,172,105,.2);transform:translate(-50%,-50%);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.ldot:nth-child(n+4){background:#001689;box-shadow:0 0 0 4px rgba(0,22,137,.25)}
+.ldot:hover{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 0 8px rgba(0,172,105,.2)}
+.ldot:nth-child(n+4):hover{box-shadow:0 0 0 8px rgba(0,22,137,.2)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(0,172,105,.2)}50%{box-shadow:0 0 0 8px rgba(0,172,105,.08)}}
+.ldot{animation:pulse 2.5s ease-in-out infinite}
+.ldot:nth-child(2){animation-delay:.4s}
+.ldot:nth-child(3){animation-delay:.8s}
+.ldot:nth-child(n+4){animation:pulse-b 2.5s ease-in-out infinite}
+.ldot:nth-child(5){animation-delay:.4s}
+.ldot:nth-child(6){animation-delay:.8s}
+@keyframes pulse-b{0%,100%{box-shadow:0 0 0 4px rgba(0,22,137,.25)}50%{box-shadow:0 0 0 8px rgba(0,22,137,.08)}}
 .fu{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .fu.on{opacity:1;transform:none}
 
 @media(max-width:768px){
-  section,.fi,.promise,.fcta,footer{padding-left:20px;padding-right:20px}
-  .founders-grid,.stats-grid,.diff-grid{grid-template-columns:1fr 1fr}
+  section,.fi,.fcta,footer{padding-left:20px;padding-right:20px}
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+  .svgrid,.tgrid{grid-template-columns:1fr}
+  .csphases{grid-template-columns:repeat(2,1fr)}
+  .ll{grid-template-columns:1fr}
   .fg{grid-template-columns:1fr}
-  .story-split{grid-template-columns:1fr!important}
-}
-@media(max-width:480px){
-  .founders-grid,.stats-grid,.diff-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -143,9 +192,9 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   </a>
   <div class="nav-center">
     <div class="npill">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="on">Home</a>
       <a href="services.html">Services</a>
-      <a href="about.html" class="on">About Us</a>
+      <a href="about.html">About Us</a>
       <a href="results.html">Results</a>
       <a href="contact.html">Contact</a>
       <a href="careers.html">Careers</a>
@@ -162,9 +211,9 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- MOBILE MENU -->
 <div class="mmenu" id="mm">
   <button class="mclose" onclick="document.getElementById('mm').classList.remove('open')">✕</button>
-  <a href="index.html">HOME</a>
+  <a href="index.html" class="on">HOME</a>
   <a href="services.html">SERVICES</a>
-  <a href="about.html" class="on">ABOUT US</a>
+  <a href="about.html">ABOUT US</a>
   <a href="results.html">RESULTS</a>
   <a href="contact.html">CONTACT</a>
   <a href="careers.html">CAREERS</a>
@@ -174,121 +223,138 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- HERO -->
 <div class="hero">
   <div class="dots"></div>
-  <div class="gl"></div>
-  <div class="gr"></div>
-  <div class="hero-logo fu" id="hl">
-    <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Loop" style="width:100%;display:block"/>
+  <div class="hero-logo fu" id="hlw">
+    <video autoplay loop muted playsinline style="width:100%;display:block;mix-blend-mode:screen">
+      <source src="./images/Animacion_Loop.mp4" type="video/mp4"/>
+    </video>
   </div>
-  <div class="fu" id="h1w"><h1>From Local Expert<br/>to US Market Leader</h1></div>
-  <div class="fu" id="h2w"><p>The bridge between your brand and 330 million consumers.</p></div>
-</div>
-
-<!-- PROMISE BANNER -->
-<div class="promise fu">
-  <div class="promise-glow"></div>
-  <p>"The only challenge you'll face is keeping up with demand."</p>
-</div>
-
-<!-- FOUNDERS -->
-<div class="fw" style="background:var(--s)">
-  <div class="fi">
-    <div style="text-align:center;margin-bottom:52px">
-      <div class="ey">Meet the founders</div>
-      <h2 class="st" style="margin-bottom:0">The People Behind<br/>the Loop</h2>
-    </div>
-    <div class="founders-grid fu">
-      <!-- Nicolás -->
-      <div class="founder-card" id="fc-0" onclick="toggleFounder(0)">
-        <div class="founder-img-wrap">
-          <img id="nc-photo" alt="Nicolás Cardona" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:relative;z-index:1"/>
-          <div style="position:absolute;top:14px;left:14px">
-            <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:16px;width:auto"/>
-          </div>
-        </div>
-        <div class="founder-info">
-          <div class="founder-name">NICOLÁS CARDONA</div>
-          <div class="founder-role">CEO & Co-Founder</div>
-          <div class="founder-detail">
-            <p class="founder-bio">Former senior leader at a global CPG company. Co-architect of the Unlimitify Loop — the methodology behind 50+ successful US market entries. Deep expertise in Amazon strategy and digital commerce execution.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Lucero -->
-      <div class="founder-card" id="fc-1" onclick="toggleFounder(1)">
-        <div class="founder-img-wrap">
-          <img src="./images/Lucero_cofounder_2.png" alt="Lucero Huerta" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:relative;z-index:1"/>
-          <div style="position:absolute;top:14px;left:14px">
-            <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:16px;width:auto"/>
-          </div>
-        </div>
-        <div class="founder-info">
-          <div class="founder-name">LUCERO HUERTA</div>
-          <div class="founder-role">CSO & Co-Founder</div>
-          <div class="founder-detail">
-            <p class="founder-bio">Former senior leader at a global CPG company. Specializes in brand positioning, go-to-market execution, and scaling operations across the US Hispanic market. Deep roots in consumer strategy and market intelligence.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="founder-hint">Click a card to read more</p>
+  <div class="fu" id="h1w"><h1>Unleash Your<br/>Brand's Potential</h1></div>
+  <div class="fu" id="h2w"><p>We engineer high-performance eCommerce ecosystems that dominate the US market.</p></div>
+  <div class="hbtns fu" id="hbw">
+    <a class="bp" href="contact.html">GET STARTED</a>
+    <a class="bg" href="contact.html">GET FREE AUDIT</a>
   </div>
 </div>
 
-<!-- STORY -->
-<section>
-  <div class="story-split fu" style="display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start">
+<!-- MARQUEE -->
+<div class="mq"><div class="mqt" id="mqt"></div></div>
+
+<!-- ABOUT TEASER -->
+<section class="fu">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
     <div>
-      <div class="ey">Our story</div>
-      <h2 class="st">How Unlimitify<br/>Was Born</h2>
-      <p style="font-size:15px;color:var(--ts);line-height:1.8">Built from real experience, real losses, and real wins — not theory. Here's how three operators turned hard-earned knowledge into the US market's most effective eCommerce methodology.</p>
+      <div class="ey">About us</div>
+      <h2 class="st">From Local Expert<br/>to US Market Leader</h2>
+      <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:28px">The bridge between your brand and 330 million consumers. We specialize in the US Hispanic market — the fastest growing economic force in eCommerce. We don't just manage ads; <strong style="color:#fff;font-weight:600">we architect your scalability.</strong></p>
+      <div class="mkts" style="margin-bottom:28px">
+        <span class="mkt">🇺🇸 USA</span>
+        <span class="mkt">🇲🇽 Mexico</span>
+        <span class="mkt">🇧🇷 Brazil</span>
+        <span class="mkt">🇨🇦 Canada</span>
+      </div>
+      <a class="bp sm" href="about.html">OUR STORY →</a>
     </div>
     <div>
-      <div class="story-block">
-        <div class="story-year">2021</div>
-        <p class="story-body">Lucero and Nicolás were both <strong>senior leaders at a global CPG company</strong>, quietly sharing the same ambition: one day, they would build something of their own.</p>
+      <div class="sgrid sc2" style="margin-bottom:22px">
+        <div class="scard"><div class="snum" data-target="150" data-sfx="M+" data-pfx="$">$0</div><div class="slbl">Managed Revenue</div></div>
+        <div class="scard"><div class="snum" data-target="4.5" data-sfx="M+" data-dec="1">0</div><div class="slbl">Ad Spend Managed</div></div>
+        <div class="scard"><div class="snum" data-target="200" data-sfx="M">0</div><div class="slbl">Consumers Reached</div></div>
+        <div class="scard"><div class="snum" data-target="14" data-sfx="">0</div><div class="slbl">Active Clients</div></div>
       </div>
-      <div class="story-block">
-        <div class="story-year">2021–24</div>
-        <p class="story-body">Along the way, they became deeply immersed in <strong>Amazon and digital commerce</strong> — learning not from theory, but from real wins, real losses, and real execution. That journey led them to another partner, whose experience and perspective completed the puzzle.</p>
-      </div>
-      <div class="story-block">
-        <div class="story-year">2024</div>
-        <p class="story-body">The three co-founders saw what others were missing. <strong>Brands were entering digital marketplaces unprepared</strong> — without the right strategy, systems, or understanding of how the game is actually played. Massive wasted spend, stalled growth, and missed opportunity.</p>
-      </div>
+      <div class="kpi"><div class="kpit"><span>Average ROAS Increase</span><span style="color:var(--g)">60–80%</span></div><div class="kpib"><div class="kpif" data-w="75"></div></div></div>
+      <div class="kpi"><div class="kpit"><span>Operational Efficiency</span><span style="color:var(--g)">80%</span></div><div class="kpib"><div class="kpif" data-w="80"></div></div></div>
+      <div class="kpi"><div class="kpit"><span>Market Penetration Rate</span><span style="color:var(--g)">80%</span></div><div class="kpib"><div class="kpif" data-w="80"></div></div></div>
+      <div class="b50"><div class="b50n">50</div><div class="b50t">Brands Successfully<br/>Scaled into the U.S. Market</div></div>
     </div>
-  </div>
-  <div class="story-quote fu">"But this wasn't just an observation — it was personal. We had built, tested, failed, iterated, and scaled eCommerce businesses ourselves."</div>
-  <div class="fu" style="max-width:680px;margin:0 auto;text-align:center">
-    <p style="font-size:16px;color:var(--ts);line-height:1.8;margin-bottom:20px">By distilling everything we learned from years in the trenches, we created what is now the <strong style="color:#fff">Unlimitify Loop</strong> — a proven, repeatable methodology designed to unlock sustainable growth, maximize profitability, and take brands far beyond what they thought was possible.</p>
-    <p style="font-size:16px;color:var(--ts);line-height:1.8"><strong style="color:#fff">That's who we are today.</strong><br/>Black belts in digital marketplaces — ready to take your brand to the next level.</p>
   </div>
 </section>
 
-<!-- IMPACT NUMBERS -->
+<!-- SERVICES TEASER -->
 <div class="fw" style="background:var(--s)">
-  <div class="fi fu">
-    <div class="ey">The impact</div>
-    <h2 class="st" style="margin-bottom:36px">The Numbers Speak</h2>
-    <div class="stats-grid" style="margin-bottom:40px">
-      <div class="stat-card"><div class="stat-num" data-target="150" data-sfx="M+" data-pfx="$">$0</div><div class="stat-label">Managed Revenue</div></div>
-      <div class="stat-card"><div class="stat-num" data-target="4.5" data-sfx="M+" data-dec="1">0</div><div class="stat-label">Ad Spend Managed</div></div>
-      <div class="stat-card"><div class="stat-num" data-target="200" data-sfx="M">0</div><div class="stat-label">Consumers Reached</div></div>
-      <div class="stat-card"><div class="stat-num" data-target="14" data-sfx="">0</div><div class="stat-label">Active Clients</div></div>
+  <div class="fi">
+    <div class="ey">What we do</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:16px">
+      <h2 class="st" style="margin-bottom:0;max-width:520px">Strategic Scalability<br/>for the US Market</h2>
+      <a class="bp sm" href="services.html" style="flex-shrink:0">SEE ALL SERVICES →</a>
     </div>
-    <div class="diff-grid">
-      <div class="diff-card"><div class="diff-n">01</div><div class="diff-t">We Architect, Not Manage</div><div class="diff-b">We build the entire ecosystem — strategy, creative, operations, analytics — so your brand compounds instead of plateaus.</div></div>
-      <div class="diff-card"><div class="diff-n">02</div><div class="diff-t">Hispanic Market Specialists</div><div class="diff-b">330 million consumers. The fastest-growing economic segment in US eCommerce. We know this market from the inside out.</div></div>
-      <div class="diff-card"><div class="diff-n">03</div><div class="diff-t">Full-Service Infrastructure</div><div class="diff-b">From creative to chargeback recovery, market entry to regulatory compliance — one partner, zero gaps.</div></div>
-    </div>
+    <div class="svgrid" id="svc"></div>
   </div>
 </div>
+
+<!-- GROWTH LOOP -->
+<section class="fu">
+  <div class="ey">Our process</div>
+  <h2 class="st">The Unlimitify Growth Loop</h2>
+  <p class="ss">Six phases. One continuous loop. The methodology behind every brand we've scaled in the US market.</p>
+  <div class="ll">
+    <div class="spr" id="stepper"></div>
+    <div>
+    <div style="position:relative;display:inline-block;width:100%">
+      <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop" style="width:100%;display:block;aspect-ratio:400/260;object-fit:contain"/>
+      <!-- Interactive dots positioned around the loop -->
+      <div style="position:absolute;inset:0">
+        <div class="ldot" style="top:18%;left:22%" onclick="AS(0)" title="Market Understanding"></div>
+        <div class="ldot" style="top:50%;left:8%"  onclick="AS(1)" title="Content Creation"></div>
+        <div class="ldot" style="top:78%;left:37%" onclick="AS(2)" title="Advertising Investment"></div>
+        <div class="ldot" style="top:18%;left:72%" onclick="AS(3)" title="Monitoring & Analysis"></div>
+        <div class="ldot" style="top:50%;left:88%" onclick="AS(4)" title="Expansion & Defense"></div>
+        <div class="ldot" style="top:78%;left:58%" onclick="AS(5)" title="Market Renewal"></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:10px;color:var(--tm);letter-spacing:.08em;text-transform:uppercase;margin-top:6px">Hover a step · Click a dot</p>
+    </div>
+    <div class="lpop" id="popup">
+      <div class="lpe" id="ppe"></div>
+      <div class="lpt" id="ppt">Hover a step</div>
+      <div class="lpb" id="ppb" style="color:var(--tm)">Select any step on the left or tap a dot on the loop to explore each phase.</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:44px">
+    <a class="bp" href="services.html">SEE HOW WE HANDLE EACH PHASE →</a>
+  </div>
+</section>
+
+<!-- RESULTS TEASER -->
+<div class="fw" style="background:var(--s)">
+  <div class="fi">
+    <div class="ey">Results</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:14px">
+      <h2 class="st" style="margin-bottom:0">Data Driven Dominance</h2>
+      <a class="bp sm" href="results.html">SEE ALL CASES →</a>
+    </div>
+    <a href="results.html" style="text-decoration:none;display:block">
+      <div class="cscard">
+        <div class="cshead">
+          <div><div class="csprod">Rábano Yodado®</div><div class="cscli">Menper Group — Portfolio Transformation</div></div>
+          <div class="csbadge">139% Revenue Surge</div>
+        </div>
+        <div class="csphases">
+          <div class="csph"><div class="csph-l">Stagnation</div><div class="csph-t">$1.5K/week</div><div class="csph-b">Undervalued at $5.19. Single-SKU ceiling.</div></div>
+          <div class="csph"><div class="csph-l">The Pivot</div><div class="csph-t">Multipacks + Overhaul</div><div class="csph-b">High-value multipacks. Price increase for margin.</div></div>
+          <div class="csph"><div class="csph-l">Execution</div><div class="csph-t">AOV $6 → $14.5</div><div class="csph-b">+140% conversion. Efficient acquisition.</div></div>
+          <div class="csph"><div class="csph-l">Dominance</div><div class="csph-t">Top 5 Brand</div><div class="csph-b">139% revenue surge in 60 days.</div></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="fu">
+  <div class="ey">Testimonials</div>
+  <h2 class="st">Customer Reviews</h2>
+  <div class="tgrid">
+    <div class="tcard"><span class="tqm">"</span><p class="tq">From day zero working with the Unlimitify team, our sales have been on a steady rise. Their expertise is clear when we look at the end of month numbers, and their support truly feels like having a real extension of our own team!</p><div class="tau"><div class="tav">EO</div><div><div class="tn">Evelyn Orduz</div><div class="tc">De Mi País</div></div></div></div>
+    <div class="tcard"><span class="tqm">"</span><p class="tq">Unlimitify is a vital partner in our U.S. marketplace expansion. Their data driven strategy and listing optimization streamlined our operations, reduced headaches, and delivered consistent, sustainable growth.</p><div class="tau"><div class="tav">AB</div><div><div class="tn">Adam Berk</div><div class="tc">Menper</div></div></div></div>
+  </div>
+</section>
 
 <!-- FINAL CTA -->
 <div class="fcta fu">
   <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(0,172,105,.1) 0%,transparent 65%);pointer-events:none"></div>
-  <h2>Ready to Scale?</h2>
-  <p>Let's talk about your brand's potential.</p>
-  <a class="bp lg" href="contact.html">LET'S TALK →</a>
+  <h2>Let's Talk About How We Can<br/>Transform Your Business!</h2>
+  <p>Stop guessing. Start scaling.</p>
+  <a class="bp lg" href="contact.html">REQUEST YOUR GROWTH AUDIT</a>
 </div>
 
 <!-- FOOTER -->
@@ -324,25 +390,82 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </footer>
 
 <script>
-// Founder cards
-function toggleFounder(i){
-  const el=document.getElementById('fc-'+i),was=el.classList.contains('expanded');
-  document.querySelectorAll('.founder-card').forEach(c=>c.classList.remove('expanded'));
-  if(!was)el.classList.add('expanded');
+const SVCS=[
+
+  {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P models on Amazon, Walmart, and major US marketplaces.',href:'services.html#digital-gtm'},
+  {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and operational margin protection.',href:'services.html#backend-ops'},
+  {ic:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',t:'Market Analysis',b:'Deep opportunity audits analyzing category dynamics and competitor weaknesses to identify your strategic advantage.',href:'services.html#market-analysis'},
+  {ic:'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',t:'Administrative Services',b:'Comprehensive back-office support: legal, finance, and regulatory affairs for a frictionless US operation.',href:'services.html#admin-services'},
+  {ic:'M13 10V3L4 14h7v7l9-11h-7z',t:'Strategic Consulting',b:"Data-driven 'Where to Play' and 'How to Win' strategies focused on sustainable revenue acceleration.",href:'services.html#strategic-consulting'},
+  {ic:'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',t:'Creative Strategy',b:'High-impact visual assets and storytelling designed to convert the US consumer at scale.',href:'services.html#creative-strategy'}
+];
+const STEPS=[
+  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
+  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
+  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
+  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
+  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
+  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
+];
+
+// Marquee — real logo images
+const LOGOS=[
+  {src:'images/balasamoTchaw_logo.png',alt:'Bálsamo Tchakowski',h:52},
+  {src:'images/kevala_logo.png',alt:'Kevala',h:38},
+  {src:'images/polvosSulpha_logo.png',alt:'Polvos de Sulpha',h:52},
+  {src:'images/manzela_logo-removebg-preview.png',alt:'Manzela',h:64},
+  {src:'images/zerenne_logo.png',alt:'Zerenne',h:36},
+  {src:'images/WaksSnacksLogo.png',alt:'Waks & Snacks',h:58},
+  {src:'images/DMP_Logo.png',alt:'De Mi País',h:48},
+  {src:'images/lacrin_logo.png',alt:'Lacrin',h:44},
+  {src:'images/opal_logo.png',alt:'Opal',h:44},
+  {src:'images/cloralen-may24-logo800-removebg-preview.png',alt:'Cloralen',h:42},
+  {src:'images/pro_logo.png',alt:'Piñalen Professional',h:52},
+];
+const mq=document.getElementById('mqt');
+if(mq){
+  const b=LOGOS.map(l=>`<div class="mqi"><img src="${l.src}" alt="${l.alt}" style="height:${l.h}px"/></div>`).join('');
+  mq.innerHTML=b+b;
 }
 
-// Nicolás photo — replace src with hosted URL
-const ncImg=document.getElementById('nc-photo');
-if(ncImg){
-  ncImg.onerror=function(){
-    this.style.display='none';
-    const wrap=this.closest('.founder-img-wrap');
-    if(wrap){const d=document.createElement('div');d.className='founder-initials';d.textContent='NC';wrap.appendChild(d);}
-  };
-  ncImg.src='./images/Nicolas_cofounder_2.png';
+// Services
+const svcEl=document.getElementById('svc');
+if(svcEl) svcEl.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
+  <svg class="svico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <defs><linearGradient id="ig${i}" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00ac69"/><stop offset="100%" stop-color="#001689"/></linearGradient></defs>
+    <path d="${s.ic}" stroke="url(#ig${i})"/>
+  </svg>
+  <h3>${s.t}</h3><p>${s.b}</p>
+</a>`).join('');
+
+// Stepper
+const stepEl=document.getElementById('stepper');
+if(stepEl){
+  STEPS.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='sp '+s.c;
+    d.innerHTML=`<div class="spd">${s.n}</div><span class="spl">${s.l}</span>`;
+    const show=()=>AS(i);
+    d.addEventListener('mouseenter',show);
+    d.addEventListener('click',show);
+    stepEl.appendChild(d);
+  });
+  stepEl.addEventListener('mouseleave',()=>{
+    stepEl.querySelectorAll('.sp').forEach(x=>x.classList.remove('on'));
+    document.getElementById('popup').classList.remove('on');
+  });
 }
 
-// Scroll & fade
+function AS(i){
+  const s=STEPS[i],el=document.getElementById('stepper');if(!el)return;
+  el.querySelectorAll('.sp').forEach((x,j)=>x.classList.toggle('on',j===i));
+  const pe=document.getElementById('ppe');pe.textContent=`0${s.n} — ${s.s}`;pe.className='lpe '+s.c;
+  document.getElementById('ppt').textContent=s.l;
+  const pb=document.getElementById('ppb');pb.textContent=s.b;pb.style.color='var(--ts)';
+  document.getElementById('popup').classList.add('on');
+}
+
+// Scroll
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',scrollY>40);
   triggerAll();
@@ -353,9 +476,13 @@ function triggerFades(){
     if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
   });
 }
-
+function triggerKPIs(){
+  document.querySelectorAll('.kpif').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight&&!el.dataset.d){el.style.width=el.dataset.w+'%';el.dataset.d=1;}
+  });
+}
 function triggerCounters(){
-  document.querySelectorAll('.stat-num[data-target]:not([data-done])').forEach(el=>{
+  document.querySelectorAll('.snum[data-target]:not([data-done])').forEach(el=>{
     if(el.getBoundingClientRect().top<window.innerHeight-40){
       el.dataset.done=1;
       const tgt=parseFloat(el.dataset.target),sfx=el.dataset.sfx||'',pfx=el.dataset.pfx||'',dec=el.dataset.dec==='1';
@@ -370,10 +497,9 @@ function triggerCounters(){
     }
   });
 }
+function triggerAll(){triggerFades();triggerKPIs();triggerCounters();}
 
-function triggerAll(){triggerFades();triggerCounters();}
-
-['hl','h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
+['hlw','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
 </script>
 </body>
