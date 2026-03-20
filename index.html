@@ -52,13 +52,13 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 .bg::before{content:'';position:absolute;inset:0;border-radius:100px;padding:1.5px;background:var(--grad);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 
 /* MARQUEE */
-.mq{background:#080808;border-top:1px solid #111;border-bottom:1px solid #111;padding:28px 0;overflow:hidden}
-.mqt{display:flex;animation:mq 28s linear infinite;white-space:nowrap;align-items:center}
+.mq{background:#0a0a0a;border-top:1px solid #111;border-bottom:1px solid #111;padding:32px 0;overflow:hidden}
+.mqt{display:flex;animation:mq 35s linear infinite;white-space:nowrap;align-items:center}
 .mqt:hover{animation-play-state:paused}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mqi{flex-shrink:0;padding:0 40px;border-right:1px solid rgba(255,255,255,.07);opacity:.85;transition:opacity .3s;display:flex;align-items:center}
+.mqi{flex-shrink:0;padding:0 52px;border-right:1px solid rgba(255,255,255,.06);opacity:.6;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
 .mqi:hover{opacity:1}
-.mqi img{height:40px;width:auto;max-width:130px;object-fit:contain;display:block;background:#fff;border-radius:8px;padding:6px 10px}
+.mqi img{height:48px;width:auto;max-width:150px;object-fit:contain;display:block;filter:brightness(0) invert(1)}
 
 /* SECTIONS */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
