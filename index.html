@@ -101,7 +101,7 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .svcard p{font-size:14px;color:var(--ts);line-height:1.65}
 
 /* LOOP */
-.ll{display:grid;grid-template-columns:210px 1fr 270px;gap:36px;align-items:center}
+.ll{display:grid;grid-template-columns:210px minmax(0,380px) 270px;gap:36px;align-items:center;justify-content:center}
 .spr{display:flex;flex-direction:column}
 .sp{display:flex;align-items:center;gap:12px;padding:7px 0;cursor:pointer;position:relative}
 .sp:not(:last-child)::after{content:'';position:absolute;left:16px;top:42px;width:2px;height:22px;background:#1a2a1a;z-index:0}
