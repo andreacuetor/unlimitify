@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Unlimitify — US eCommerce Market Expansion</title>
 <link rel="icon" type="image/png" href="./images/Icon_Color.png"/>
@@ -295,24 +295,12 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     <div>
     <div style="position:relative;width:320px;height:320px;flex-shrink:0;margin:0 auto">
       <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop" style="width:320px;height:320px;object-fit:contain;display:block"/>
-      <div class="ldot" style="top:28%;left:29%" onclick="AS(0)">
-        <div class="tip flip"><div class="tip-eye">01 — Foundation</div><div class="tip-title">Market Understanding</div><div class="tip-body">Deep audits revealing category dynamics, competitor gaps, and your strategic entry point.</div></div>
-      </div>
-      <div class="ldot" style="top:50%;left:16%" onclick="AS(1)">
-        <div class="tip"><div class="tip-eye">02 — Creative</div><div class="tip-title">Content Creation</div><div class="tip-body">High-impact assets designed to convert the US consumer — listings, A+ content, video.</div></div>
-      </div>
-      <div class="ldot" style="top:72%;left:36%" onclick="AS(2)">
-        <div class="tip"><div class="tip-eye">03 — Growth</div><div class="tip-title">Advertising Investment</div><div class="tip-body">Data-driven paid media across Amazon, Meta, and Google. Capital deployed where it wins.</div></div>
-      </div>
-      <div class="ldot" style="top:28%;left:71%;--dc:#001689" onclick="AS(3)">
-        <div class="tip flip"><div class="tip-eye" style="color:#4a7fff">04 — Intelligence</div><div class="tip-title">Monitoring & Analysis</div><div class="tip-body">Real-time dashboards tracking ROAS, market share, and conversion. Signals caught early.</div></div>
-      </div>
-      <div class="ldot" style="top:50%;left:84%;--dc:#001689" onclick="AS(4)">
-        <div class="tip"><div class="tip-eye" style="color:#4a7fff">05 — Scale</div><div class="tip-title">Expansion & Defense</div><div class="tip-body">New SKUs, adjacent categories, marketplace diversification — position protected.</div></div>
-      </div>
-      <div class="ldot" style="top:72%;left:64%;--dc:#001689" onclick="AS(5)">
-        <div class="tip"><div class="tip-eye" style="color:#4a7fff">06 — Loop</div><div class="tip-title">Market Renewal</div><div class="tip-body">Markets evolve. We re-audit, refresh creative, realign strategy. Then the loop starts again.</div></div>
-      </div>
+      <div class="ldot" style="top:28%;left:29%" onclick="AS(0)"></div>
+      <div class="ldot" style="top:50%;left:16%" onclick="AS(1)"></div>
+      <div class="ldot" style="top:72%;left:36%" onclick="AS(2)"></div>
+      <div class="ldot" style="top:28%;left:71%;--dc:#4a7fff" onclick="AS(3)"></div>
+      <div class="ldot" style="top:50%;left:84%;--dc:#4a7fff" onclick="AS(4)"></div>
+      <div class="ldot" style="top:72%;left:64%;--dc:#4a7fff" onclick="AS(5)"></div>
     </div>
     <p style="text-align:center;font-size:10px;color:var(--tm);letter-spacing:.08em;text-transform:uppercase;margin-top:10px">Hover a dot to explore each phase</p>
     </div>
@@ -511,6 +499,12 @@ function triggerCounters(){
   });
 }
 function triggerAll(){triggerFades();triggerKPIs();triggerCounters();}
+
+// Loop dot tooltips — activate right panel instead
+document.querySelectorAll('.ldot').forEach((dot,i)=>{
+  dot.addEventListener('mouseenter',()=>AS(i));
+  dot.addEventListener('click',()=>AS(i));
+});
 
 ['hlw','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
