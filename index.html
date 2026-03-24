@@ -344,8 +344,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 
     <!-- PANEL RIGHT -->
     <div class="loop-panel">
-      <div class="loop-counter" id="loop-counter"></div>
-      <div class="loop-panel-inner" id="loop-panel">
+<div class="loop-panel-inner" id="loop-panel">
         <span class="loop-panel-eye" id="loop-panel-eye"></span>
         <span class="loop-panel-title" id="loop-panel-title"></span>
         <span class="loop-panel-body" id="loop-panel-body"></span>
@@ -486,19 +485,10 @@ if(svcEl) svcEl.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
 
 // Growth Loop
 const dots=document.querySelectorAll('.ldot');
-const counterEl=document.getElementById('loop-counter');
 const connLine=document.getElementById('conn-line');
 const loopSection=document.getElementById('loop-section');
 const loopPanel=document.getElementById('loop-panel');
 let loopTimeout=null;
-
-// Build counter dots
-STEPS.forEach((_,i)=>{
-  const d=document.createElement('div');
-  d.className='loop-counter-dot';
-  d.setAttribute('data-i',i);
-  if(counterEl)counterEl.appendChild(d);
-});
 
 function drawConnector(dot){
   if(!connLine||!loopSection||!loopPanel)return;
@@ -521,7 +511,7 @@ function drawConnector(dot){
 function activateLoopStep(i){
   const s=STEPS[i];
   dots.forEach((d,j)=>d.classList.toggle('active',j===i));
-  document.querySelectorAll('.loop-counter-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
+
   const hint=document.getElementById('loop-hint');
   if(hint)hint.style.opacity='0';
   const panel=document.getElementById('loop-panel');
