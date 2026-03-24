@@ -35,10 +35,6 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:80px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.18) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
-.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.2) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
-@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
-@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
 .hero-logo{width:min(520px,86vw);margin-bottom:44px}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:20px}
 .hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:540px;line-height:1.7;margin-bottom:36px}
@@ -59,7 +55,7 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .mqi{flex-shrink:0;padding:0 52px;border-right:1px solid rgba(255,255,255,.06);opacity:.75;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
 .mqi:hover{opacity:1}
-.mqi img{height:72px;width:auto;max-width:180px;object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
+.mqi img{object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
 
 /* SECTIONS */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
@@ -100,24 +96,50 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .svcard h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:#fff;margin-bottom:8px}
 .svcard p{font-size:14px;color:var(--ts);line-height:1.65}
 
-/* LOOP */
-.ll{display:grid;grid-template-columns:210px minmax(0,380px) 270px;gap:36px;align-items:center;justify-content:center}
-.spr{display:flex;flex-direction:column}
-.sp{display:flex;align-items:center;gap:12px;padding:7px 0;cursor:pointer;position:relative}
-.sp:not(:last-child)::after{content:'';position:absolute;left:16px;top:42px;width:2px;height:22px;background:#1a2a1a;z-index:0}
-.spd{width:33px;height:33px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;transition:all .3s;border:2px solid #1a2a1a;color:var(--tm);background:var(--bg);z-index:1;position:relative}
-.sp.g .spd{border-color:var(--g);color:var(--g)}
-.sp.b .spd{border-color:#3b5bff;color:#7a9fff}
-.sp.on.g .spd{background:var(--g);color:#fff;box-shadow:0 0 18px rgba(0,172,105,.45)}
-.sp.on.b .spd{background:#001689;color:#fff;box-shadow:0 0 18px rgba(0,22,137,.5)}
-.spl{font-size:13px;color:var(--tm);font-weight:500;transition:color .3s}
-.sp.on .spl{color:#fff}
-.lpop{background:var(--s);border:1px solid #1a2a1a;border-radius:14px;padding:22px;opacity:0;transform:translateY(10px);transition:all .35s cubic-bezier(.4,0,.2,1);min-height:150px}
-.lpop.on{opacity:1;transform:translateY(0)}
-.lpe{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
-.lpe.g{color:var(--g)}.lpe.b{color:#7a9fff}
-.lpt{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:8px}
-.lpb{font-size:13px;color:var(--ts);line-height:1.65}
+/* GROWTH LOOP */
+.loop-section{display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;position:relative}
+.loop-section::before{content:'';position:absolute;inset:-60px;background:radial-gradient(ellipse at 35% 50%,rgba(0,172,105,.15) 0%,transparent 50%),radial-gradient(ellipse at 65% 50%,rgba(0,22,137,.18) 0%,transparent 50%);pointer-events:none;animation:lglow 4s ease-in-out infinite alternate;z-index:0}
+@keyframes lglow{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.05)}}
+.loop-center{position:relative;width:440px;height:440px;flex-shrink:0;margin:0 auto;z-index:1}
+.loop-center img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* DOTS */
+.ldot{position:absolute;width:28px;height:28px;border-radius:50%;cursor:pointer;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:11px;color:#fff;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
+.ldot::after{content:'';position:absolute;inset:-6px;border-radius:50%;opacity:.2;animation:ldpulse 2.5s ease-in-out infinite;z-index:-1}
+.ldot:hover,.ldot.active{transform:translate(-50%,-50%) scale(1.4)}
+@keyframes ldpulse{0%,100%{transform:scale(1);opacity:.2}50%{transform:scale(2.2);opacity:.04}}
+/* Gradient colors per step — green→teal→blue */
+.ldot[data-i="0"]{background:#00ac69;box-shadow:0 0 0 3px rgba(0,172,105,.3)}.ldot[data-i="0"]::after{background:#00ac69}
+.ldot[data-i="1"]{background:#009980;box-shadow:0 0 0 3px rgba(0,153,128,.3)}.ldot[data-i="1"]::after{background:#009980}
+.ldot[data-i="2"]{background:#007a99;box-shadow:0 0 0 3px rgba(0,122,153,.3)}.ldot[data-i="2"]::after{background:#007a99}
+.ldot[data-i="3"]{background:#0055bb;box-shadow:0 0 0 3px rgba(0,85,187,.3)}.ldot[data-i="3"]::after{background:#0055bb}
+.ldot[data-i="4"]{background:#002fa3;box-shadow:0 0 0 3px rgba(0,47,163,.3)}.ldot[data-i="4"]::after{background:#002fa3}
+.ldot[data-i="5"]{background:#001689;box-shadow:0 0 0 3px rgba(0,22,137,.3)}.ldot[data-i="5"]::after{background:#001689}
+.ldot:hover,.ldot.active{box-shadow:0 0 18px 6px currentColor!important}
+.ldot[data-i="0"]:hover,.ldot[data-i="0"].active{box-shadow:0 0 18px 6px rgba(0,172,105,.6)!important}
+.ldot[data-i="1"]:hover,.ldot[data-i="1"].active{box-shadow:0 0 18px 6px rgba(0,153,128,.6)!important}
+.ldot[data-i="2"]:hover,.ldot[data-i="2"].active{box-shadow:0 0 18px 6px rgba(0,122,153,.6)!important}
+.ldot[data-i="3"]:hover,.ldot[data-i="3"].active{box-shadow:0 0 18px 6px rgba(0,85,187,.6)!important}
+.ldot[data-i="4"]:hover,.ldot[data-i="4"].active{box-shadow:0 0 18px 6px rgba(0,47,163,.6)!important}
+.ldot[data-i="5"]:hover,.ldot[data-i="5"].active{box-shadow:0 0 18px 6px rgba(0,22,137,.6)!important}
+
+/* PHASE PILLS */
+.loop-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.loop-pill{font-size:11px;font-weight:600;color:var(--tm);background:var(--s);border:1px solid #1a1a1a;border-radius:100px;padding:6px 14px;cursor:pointer;transition:all .2s;letter-spacing:.04em;font-family:inherit}
+.loop-pill:hover{color:#fff;border-color:#252525}
+.loop-pill.active.g{color:var(--g);border-color:rgba(0,172,105,.4);background:rgba(0,172,105,.06)}
+.loop-pill.active.b{color:#4a7fff;border-color:rgba(74,127,255,.4);background:rgba(74,127,255,.06)}
+
+/* LOOP PANEL */
+.loop-panel{width:100%;max-width:560px;margin:0 auto;min-height:100px;padding:8px 0 0}
+.loop-panel-inner{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:28px 32px;width:100%;opacity:0;transform:translateY(10px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.loop-panel-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+.loop-panel-inner.vis{opacity:1;transform:translateY(0)}
+.loop-panel-eye{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.loop-panel-eye.sg{color:var(--g)}.loop-panel-eye.sb{color:#4a7fff}
+.loop-panel-title{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;color:#fff;margin-bottom:8px;text-align:left}
+.loop-panel-body{font-size:14px;color:var(--ts);line-height:1.7;text-align:left}
+.loop-hint{font-size:10px;color:var(--tm);letter-spacing:.1em;text-transform:uppercase;margin-top:20px}
 
 /* CASE STUDY */
 .cscard{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:32px;border-left:3px solid var(--g)}
@@ -157,19 +179,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 .fline{height:1px;background:var(--grad);margin-bottom:28px;border:none}
 .fbot{border-top:1px solid #111;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-/* LOOP DOTS */
-.ldot{position:absolute;width:14px;height:14px;border-radius:50%;background:#00ac69;box-shadow:0 0 0 4px rgba(0,172,105,.2);transform:translate(-50%,-50%);cursor:pointer;transition:transform .2s,box-shadow .2s}
-.ldot:nth-child(n+4){background:#001689;box-shadow:0 0 0 4px rgba(0,22,137,.25)}
-.ldot:hover{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 0 8px rgba(0,172,105,.2)}
-.ldot:nth-child(n+4):hover{box-shadow:0 0 0 8px rgba(0,22,137,.2)}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(0,172,105,.2)}50%{box-shadow:0 0 0 8px rgba(0,172,105,.08)}}
-.ldot{animation:pulse 2.5s ease-in-out infinite}
-.ldot:nth-child(2){animation-delay:.4s}
-.ldot:nth-child(3){animation-delay:.8s}
-.ldot:nth-child(n+4){animation:pulse-b 2.5s ease-in-out infinite}
-.ldot:nth-child(5){animation-delay:.4s}
-.ldot:nth-child(6){animation-delay:.8s}
-@keyframes pulse-b{0%,100%{box-shadow:0 0 0 4px rgba(0,22,137,.25)}50%{box-shadow:0 0 0 8px rgba(0,22,137,.08)}}
+/* ANIMATIONS */
 .fu{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .fu.on{opacity:1;transform:none}
 
@@ -178,7 +188,8 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   .sgrid{grid-template-columns:repeat(2,1fr)}
   .svgrid,.tgrid{grid-template-columns:1fr}
   .csphases{grid-template-columns:repeat(2,1fr)}
-  .ll{grid-template-columns:1fr}
+  .loop-center{width:100%;height:auto;aspect-ratio:1/1;max-width:300px;margin:0 auto}
+  .loop-panel{padding-left:0;padding-right:0}
   .fg{grid-template-columns:1fr}
 }
 </style>
@@ -290,27 +301,34 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   <div class="ey">Our process</div>
   <h2 class="st">The Unlimitify Growth Loop</h2>
   <p class="ss">Six phases. One continuous loop. The methodology behind every brand we've scaled in the US market.</p>
-  <div class="ll">
-    <div class="spr" id="stepper"></div>
-    <div>
-    <div style="position:relative;width:320px;height:320px;flex-shrink:0;margin:0 auto">
-      <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop" style="width:320px;height:320px;object-fit:contain;display:block"/>
-      <div class="ldot" style="top:28%;left:29%" onclick="AS(0)"></div>
-      <div class="ldot" style="top:50%;left:16%" onclick="AS(1)"></div>
-      <div class="ldot" style="top:72%;left:36%" onclick="AS(2)"></div>
-      <div class="ldot" style="top:28%;left:71%;--dc:#4a7fff" onclick="AS(3)"></div>
-      <div class="ldot" style="top:50%;left:84%;--dc:#4a7fff" onclick="AS(4)"></div>
-      <div class="ldot" style="top:72%;left:64%;--dc:#4a7fff" onclick="AS(5)"></div>
+
+  <div class="loop-section">
+    <!-- PHASE PILLS -->
+    <div class="loop-pills" id="loop-pills"></div>
+
+    <!-- LOOP IMAGE + DOTS -->
+    <div class="loop-center">
+      <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop"/>
+      <div class="ldot" data-i="0" style="top:28%;left:29%">1</div>
+      <div class="ldot" data-i="1" style="top:50%;left:16%">2</div>
+      <div class="ldot" data-i="2" style="top:72%;left:36%">3</div>
+      <div class="ldot" data-i="3" style="top:28%;left:71%">4</div>
+      <div class="ldot" data-i="4" style="top:50%;left:84%">5</div>
+      <div class="ldot" data-i="5" style="top:72%;left:64%">6</div>
     </div>
-    <p style="text-align:center;font-size:10px;color:var(--tm);letter-spacing:.08em;text-transform:uppercase;margin-top:10px">Hover a dot to explore each phase</p>
+
+    <!-- INFO PANEL -->
+    <div class="loop-panel">
+      <div class="loop-panel-inner" id="loop-panel">
+        <div class="loop-panel-eye" id="loop-panel-eye"></div>
+        <div class="loop-panel-title" id="loop-panel-title"></div>
+        <div class="loop-panel-body" id="loop-panel-body"></div>
+      </div>
     </div>
-    <div class="lpop" id="popup">
-      <div class="lpe" id="ppe"></div>
-      <div class="lpt" id="ppt">Hover a step</div>
-      <div class="lpb" id="ppb" style="color:var(--tm)">Select any step on the left or tap a dot on the loop to explore each phase.</div>
-    </div>
+    <p class="loop-hint">Hover a dot or click a phase to explore</p>
   </div>
-  <div style="text-align:center;margin-top:44px">
+
+  <div style="text-align:center;margin-top:36px">
     <a class="bp" href="services.html">SEE HOW WE HANDLE EACH PHASE →</a>
   </div>
 </section>
@@ -381,7 +399,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     <div class="fcol">
       <h4>Contact</h4>
       <span style="font-size:13px;color:var(--g)">sales@unlimitify.com</span>
-      <p style="font-size:12px;color:var(--tm);margin-top:8px;line-height:1.7">USA · Mexico · Brazil · Canada</p>
+      <p style="font-size:12px;color:var(--tm);margin-top:8px;line-height:1.7">USA · Mexico · Brazil · Canada · Spain · Argentina · Colombia</p>
     </div>
   </div>
   <div class="fbot">
@@ -391,25 +409,6 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </footer>
 
 <script>
-const SVCS=[
-
-  {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P models on Amazon, Walmart, and major US marketplaces.',href:'services.html#digital-gtm'},
-  {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and operational margin protection.',href:'services.html#backend-ops'},
-  {ic:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',t:'Market Analysis',b:'Deep opportunity audits analyzing category dynamics and competitor weaknesses to identify your strategic advantage.',href:'services.html#market-analysis'},
-  {ic:'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',t:'Administrative Services',b:'Comprehensive back-office support: legal, finance, and regulatory affairs for a frictionless US operation.',href:'services.html#admin-services'},
-  {ic:'M13 10V3L4 14h7v7l9-11h-7z',t:'Strategic Consulting',b:"Data-driven 'Where to Play' and 'How to Win' strategies focused on sustainable revenue acceleration.",href:'services.html#strategic-consulting'},
-  {ic:'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',t:'Creative Strategy',b:'High-impact visual assets and storytelling designed to convert the US consumer at scale.',href:'services.html#creative-strategy'}
-];
-const STEPS=[
-  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
-  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
-  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
-  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
-  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
-  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
-];
-
-// Marquee — real logo images
 const LOGOS=[
   {src:'images/balasamoTchaw_logo.png',alt:'Bálsamo Tchakowski',h:64},
   {src:'images/kevala_logo.png',alt:'Kevala',h:58},
@@ -423,6 +422,26 @@ const LOGOS=[
   {src:'images/cloralen-may24-logo800-removebg-preview.png',alt:'Cloralen',h:42},
   {src:'images/pro_logo.png',alt:'Piñalen Professional',h:52},
 ];
+
+const SVCS=[
+  {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P models on Amazon, Walmart, and major US marketplaces.',href:'services.html#digital-gtm'},
+  {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and operational margin protection.',href:'services.html#backend-ops'},
+  {ic:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',t:'Market Analysis',b:'Deep opportunity audits analyzing category dynamics and competitor weaknesses to identify your strategic advantage.',href:'services.html#market-analysis'},
+  {ic:'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',t:'Administrative Services',b:'Comprehensive back-office support: legal, finance, and regulatory affairs for a frictionless US operation.',href:'services.html#admin-services'},
+  {ic:'M13 10V3L4 14h7v7l9-11h-7z',t:'Strategic Consulting',b:"Data-driven 'Where to Play' and 'How to Win' strategies focused on sustainable revenue acceleration.",href:'services.html#strategic-consulting'},
+  {ic:'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',t:'Creative Strategy',b:'High-impact visual assets and storytelling designed to convert the US consumer at scale.',href:'services.html#creative-strategy'}
+];
+
+const STEPS=[
+  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
+  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
+  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
+  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
+  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
+  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
+];
+
+// Marquee
 const mq=document.getElementById('mqt');
 if(mq){
   const b=LOGOS.map(l=>`<div class="mqi"><img src="${l.src}" alt="${l.alt}" style="height:${l.h}px"/></div>`).join('');
@@ -439,32 +458,44 @@ if(svcEl) svcEl.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
   <h3>${s.t}</h3><p>${s.b}</p>
 </a>`).join('');
 
-// Stepper
-const stepEl=document.getElementById('stepper');
-if(stepEl){
-  STEPS.forEach((s,i)=>{
-    const d=document.createElement('div');
-    d.className='sp '+s.c;
-    d.innerHTML=`<div class="spd">${s.n}</div><span class="spl">${s.l}</span>`;
-    const show=()=>AS(i);
-    d.addEventListener('mouseenter',show);
-    d.addEventListener('click',show);
-    stepEl.appendChild(d);
-  });
-  stepEl.addEventListener('mouseleave',()=>{
-    stepEl.querySelectorAll('.sp').forEach(x=>x.classList.remove('on'));
-    document.getElementById('popup').classList.remove('on');
-  });
+// Growth Loop
+const pillsEl=document.getElementById('loop-pills');
+STEPS.forEach((s,i)=>{
+  const pill=document.createElement('button');
+  pill.className='loop-pill '+(s.c==='g'?'g':'b');
+  pill.textContent=s.l;
+  pill.onclick=()=>activateLoopStep(i);
+  if(pillsEl)pillsEl.appendChild(pill);
+});
+
+let loopTimeout=null;
+const dots=document.querySelectorAll('.ldot');
+function activateLoopStep(i){
+  const s=STEPS[i];
+  // pills
+  document.querySelectorAll('.loop-pill').forEach((p,j)=>p.classList.toggle('active',j===i));
+  // dots — highlight active
+  dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+  // panel
+  const panel=document.getElementById('loop-panel');
+  const eye=document.getElementById('loop-panel-eye');
+  const title=document.getElementById('loop-panel-title');
+  const body=document.getElementById('loop-panel-body');
+  panel.classList.remove('vis');
+  if(loopTimeout)clearTimeout(loopTimeout);
+  loopTimeout=setTimeout(()=>{
+    eye.textContent=`0${s.n} — ${s.s}`;
+    eye.className='loop-panel-eye '+(s.c==='g'?'sg':'sb');
+    title.textContent=s.l;
+    body.textContent=s.b;
+    panel.classList.add('vis');
+  },80);
 }
 
-function AS(i){
-  const s=STEPS[i],el=document.getElementById('stepper');if(!el)return;
-  el.querySelectorAll('.sp').forEach((x,j)=>x.classList.toggle('on',j===i));
-  const pe=document.getElementById('ppe');pe.textContent=`0${s.n} — ${s.s}`;pe.className='lpe '+s.c;
-  document.getElementById('ppt').textContent=s.l;
-  const pb=document.getElementById('ppb');pb.textContent=s.b;pb.style.color='var(--ts)';
-  document.getElementById('popup').classList.add('on');
-}
+document.querySelectorAll('.ldot').forEach((dot,i)=>{
+  dot.addEventListener('mouseenter',()=>activateLoopStep(i));
+  dot.addEventListener('click',()=>activateLoopStep(i));
+});
 
 // Scroll
 window.addEventListener('scroll',()=>{
@@ -499,12 +530,6 @@ function triggerCounters(){
   });
 }
 function triggerAll(){triggerFades();triggerKPIs();triggerCounters();}
-
-// Loop dot tooltips — activate right panel instead
-document.querySelectorAll('.ldot').forEach((dot,i)=>{
-  dot.addEventListener('mouseenter',()=>AS(i));
-  dot.addEventListener('click',()=>AS(i));
-});
 
 ['hlw','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
