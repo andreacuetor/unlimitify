@@ -49,13 +49,13 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 .bg::before{content:'';position:absolute;inset:0;border-radius:100px;padding:1.5px;background:var(--grad);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 
 /* MARQUEE */
-.mq{background:#0a0a0a;border-top:1px solid #111;border-bottom:1px solid #111;padding:32px 0;overflow:hidden}
-.mqt{display:flex;animation:mq 35s linear infinite;white-space:nowrap;align-items:center}
+.mq{background:#0a0a0a;border-top:1px solid #111;border-bottom:1px solid #111;padding:28px 0;overflow:hidden}
+.mqt{display:flex;animation:mq 40s linear infinite;white-space:nowrap;align-items:center}
 .mqt:hover{animation-play-state:paused}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mqi{flex-shrink:0;padding:0 52px;border-right:1px solid rgba(255,255,255,.06);opacity:.75;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
+.mqi{flex-shrink:0;padding:0 44px;border-right:1px solid rgba(255,255,255,.06);opacity:.75;transition:opacity .3s;display:flex;align-items:center;justify-content:center;height:64px}
 .mqi:hover{opacity:1}
-.mqi img{object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
+.mqi img{height:36px;width:auto;max-width:120px;object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
 
 /* SECTIONS */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
@@ -139,7 +139,10 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .loop-panel-body{font-size:15px;color:var(--ts);line-height:1.75;display:block;min-height:80px}
 .loop-hint{font-size:10px;color:var(--tm);letter-spacing:.1em;text-transform:uppercase;margin-top:28px;display:block;transition:opacity .3s}
 
-/* STEP COUNTER */
+/* CONNECTOR LINE */
+.loop-connector{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
+.loop-connector-line{fill:none;stroke:url(#connGrad);stroke-width:1.5;stroke-dasharray:6 4;opacity:0;transition:opacity .4s}
+.loop-connector-line.vis{opacity:.6}
 .loop-counter{display:flex;gap:6px;margin-bottom:24px}
 .loop-counter-dot{width:6px;height:6px;border-radius:50%;background:#1a1a1a;transition:background .3s,transform .3s}
 .loop-counter-dot.active{transform:scale(1.4)}
@@ -180,7 +183,7 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 
 /* FINAL CTA */
 .fcta{text-align:center;padding:110px 48px;position:relative;overflow:hidden;background:var(--s);border-top:1px solid #111}
-.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,4vw,50px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:760px;margin:0 auto 16px;line-height:1.05}
+.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,4vw,52px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:800px;margin:0 auto 16px;line-height:1.05}
 .fcta p{font-size:17px;color:var(--ts);margin-bottom:32px}
 
 /* FOOTER */
@@ -249,7 +252,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- HERO -->
 <div class="hero">
   <div class="dots"></div>
-  <div class="hero-logo fu" id="hlw">
+  <div class="hero-logo fu" id="hlw" style="-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 55%,transparent 100%)">
     <video autoplay loop muted playsinline style="width:100%;display:block;mix-blend-mode:screen">
       <source src="./images/Animacion_Loop.mp4" type="video/mp4"/>
     </video>
@@ -316,7 +319,17 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   <h2 class="st">The Unlimitify Growth Loop</h2>
   <p class="ss">Six phases. One continuous loop. The methodology behind every brand we've scaled in the US market.</p>
 
-  <div class="loop-section">
+  <div class="loop-section" id="loop-section">
+    <!-- SVG connector overlay -->
+    <svg class="loop-connector" id="loop-svg">
+      <defs>
+        <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00ac69" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#001689" stop-opacity="0.4"/>
+        </linearGradient>
+      </defs>
+      <path class="loop-connector-line" id="conn-line"/>
+    </svg>
     <!-- LOOP IMAGE + DOTS -->
     <div class="loop-center">
       <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop"/>
@@ -384,7 +397,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- FINAL CTA -->
 <div class="fcta fu">
   <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(0,172,105,.1) 0%,transparent 65%);pointer-events:none"></div>
-  <h2>Let's Talk About How We Can<br/>Transform Your Business!</h2>
+  <h2>Let's Talk About How We Can<br/>Transform Your Business</h2>
   <p>Stop guessing. Start scaling.</p>
   <a class="bp lg" href="contact.html">REQUEST YOUR GROWTH AUDIT</a>
 </div>
@@ -423,17 +436,17 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 
 <script>
 const LOGOS=[
-  {src:'images/balasamoTchaw_logo.png',alt:'Bálsamo Tchakowski',h:64},
-  {src:'images/kevala_logo.png',alt:'Kevala',h:58},
-  {src:'images/polvosSulpha_logo.png',alt:'Polvos de Sulpha',h:64},
-  {src:'images/manzela_logo-removebg-preview.png',alt:'Manzela',h:64},
-  {src:'images/zerenne_logo.png',alt:'Zerenne',h:56},
-  {src:'images/WaksSnacksLogo.png',alt:'Waks & Snacks',h:58},
-  {src:'images/DMP_Logo.png',alt:'De Mi País',h:58},
-  {src:'images/lacrin_logo.png',alt:'Lacrin',h:58},
-  {src:'images/opal_logo.png',alt:'Opal',h:58},
-  {src:'images/cloralen-may24-logo800-removebg-preview.png',alt:'Cloralen',h:42},
-  {src:'images/pro_logo.png',alt:'Piñalen Professional',h:52},
+  {src:'images/balasamoTchaw_logo.png',alt:'Bálsamo Tchakowski'},
+  {src:'images/kevala_logo.png',alt:'Kevala'},
+  {src:'images/polvosSulpha_logo.png',alt:'Polvos de Sulpha'},
+  {src:'images/manzela_logo-removebg-preview.png',alt:'Manzela'},
+  {src:'images/zerenne_logo.png',alt:'Zerenne'},
+  {src:'images/WaksSnacksLogo.png',alt:'Waks & Snacks'},
+  {src:'images/DMP_Logo.png',alt:'De Mi País'},
+  {src:'images/lacrin_logo.png',alt:'Lacrin'},
+  {src:'images/opal_logo.png',alt:'Opal'},
+  {src:'images/cloralen-may24-logo800-removebg-preview.png',alt:'Cloralen'},
+  {src:'images/pro_logo.png',alt:'Piñalen Professional'},
 ];
 
 const SVCS=[
@@ -457,7 +470,7 @@ const STEPS=[
 // Marquee
 const mq=document.getElementById('mqt');
 if(mq){
-  const b=LOGOS.map(l=>`<div class="mqi"><img src="${l.src}" alt="${l.alt}" style="height:${l.h}px"/></div>`).join('');
+  const b=LOGOS.map(l=>`<div class="mqi"><img src="${l.src}" alt="${l.alt}"/></div>`).join('');
   mq.innerHTML=b+b;
 }
 
@@ -474,6 +487,9 @@ if(svcEl) svcEl.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
 // Growth Loop
 const dots=document.querySelectorAll('.ldot');
 const counterEl=document.getElementById('loop-counter');
+const connLine=document.getElementById('conn-line');
+const loopSection=document.getElementById('loop-section');
+const loopPanel=document.getElementById('loop-panel');
 let loopTimeout=null;
 
 // Build counter dots
@@ -484,20 +500,36 @@ STEPS.forEach((_,i)=>{
   if(counterEl)counterEl.appendChild(d);
 });
 
+function drawConnector(dot){
+  if(!connLine||!loopSection||!loopPanel)return;
+  const sr=loopSection.getBoundingClientRect();
+  const dr=dot.getBoundingClientRect();
+  const pr=loopPanel.getBoundingClientRect();
+  // dot center relative to section
+  const x1=dr.left+dr.width/2-sr.left;
+  const y1=dr.top+dr.height/2-sr.top;
+  // panel left-center relative to section
+  const x2=pr.left-sr.left;
+  const y2=pr.top+pr.height/2-sr.top;
+  // curved path
+  const mx=(x1+x2)/2;
+  const path=`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
+  connLine.setAttribute('d',path);
+  connLine.classList.add('vis');
+}
+
 function activateLoopStep(i){
   const s=STEPS[i];
-  // highlight active dot
   dots.forEach((d,j)=>d.classList.toggle('active',j===i));
-  // counter
   document.querySelectorAll('.loop-counter-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
-  // hide hint
   const hint=document.getElementById('loop-hint');
   if(hint)hint.style.opacity='0';
-  // panel
   const panel=document.getElementById('loop-panel');
   const eye=document.getElementById('loop-panel-eye');
   const title=document.getElementById('loop-panel-title');
   const body=document.getElementById('loop-panel-body');
+  // draw connector from active dot
+  drawConnector(dots[i]);
   panel.classList.remove('vis');
   if(loopTimeout)clearTimeout(loopTimeout);
   loopTimeout=setTimeout(()=>{
