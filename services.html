@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Services — Unlimitify</title>
 <meta name="description" content="Unlimitify's full-service eCommerce infrastructure: Digital Go to Market, Back-End Operations, Market Analysis, and more."/>
+<link rel="icon" type="image/png" href="./images/Icon_Color.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--g:#00ac69;--b:#001689;--bg:#050505;--s:#0f0f0f;--s2:#141414;--ts:#9a9a9a;--tm:#555;--grad:linear-gradient(90deg,#00ac69,#001689)}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
@@ -60,12 +60,12 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .st{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;color:#fff;margin-bottom:20px}
 .ss{font-size:16px;color:var(--ts);line-height:1.7;max-width:600px;margin-bottom:40px}
 
-/* SERVICE OVERVIEW CARDS */
+/* SERVICE CARDS */
 .svgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .svcard{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:28px;position:relative;overflow:hidden;transition:transform .25s,border-color .3s;text-decoration:none;display:block;cursor:pointer}
 .svcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.4,0,.2,1)}
 .svcard:hover::before{transform:scaleX(1)}
-.svcard:hover{transform:translateY(-3px);border-color:#222;box-shadow:0 12px 40px rgba(0,172,105,.05)}
+.svcard:hover{transform:translateY(-3px);border-color:#222}
 .svico{width:38px;height:38px;margin-bottom:16px}
 .svcard h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:#fff;margin-bottom:8px}
 .svcard p{font-size:14px;color:var(--ts);line-height:1.65}
@@ -80,7 +80,7 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .detail-card p{font-size:13px;color:var(--ts);line-height:1.65}
 .detail-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
 
-/* SERVICE LIST ITEMS */
+/* SERVICE LIST */
 .sv-list{list-style:none;margin-bottom:0}
 .sv-list li{font-size:13px;color:var(--ts);padding:9px 0;border-bottom:1px solid #1a1a1a;display:flex;gap:10px;align-items:flex-start;line-height:1.55}
 .sv-list li:last-child{border-bottom:none}
@@ -99,12 +99,12 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .snum{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3vw,42px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 .slbl{font-size:11px;color:var(--tm);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
 
-/* QUOTE BLOCK */
+/* QUOTE */
 .qblock{border-left:3px solid var(--g);padding:24px 28px;background:rgba(0,172,105,.05);border-radius:0 12px 12px 0}
 .qblock p{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(18px,2.4vw,28px);color:#fff;line-height:1.3}
 
 /* GROWTH LOOP */
-.loop-section{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center;position:relative}
+.loop-section{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center;position:relative;isolation:isolate}
 .loop-section::before{content:'';position:absolute;inset:-80px;background:radial-gradient(ellipse at 35% 50%,rgba(0,172,105,.13) 0%,transparent 50%),radial-gradient(ellipse at 65% 50%,rgba(0,22,137,.15) 0%,transparent 50%);pointer-events:none;animation:lglow 4s ease-in-out infinite alternate;z-index:0}
 @keyframes lglow{from{opacity:.7}to{opacity:1}}
 .loop-center{position:relative;width:100%;aspect-ratio:1/1;max-width:560px;margin:0 auto;z-index:1}
@@ -133,7 +133,7 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .ldot[data-i="5"]:hover,.ldot[data-i="5"].active{box-shadow:0 0 16px 5px rgba(0,22,137,.5)}
 @keyframes ldpulse{0%,100%{transform:scale(1);opacity:.12}50%{transform:scale(2.2);opacity:.03}}
 
-/* LOOP PANEL RIGHT */
+/* LOOP PANEL */
 .loop-panel{z-index:1;display:flex;flex-direction:column}
 .loop-panel-inner{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:28px 32px;position:relative;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1)}
 .loop-panel-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
@@ -144,16 +144,9 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .loop-panel-body{font-size:14px;color:var(--ts);line-height:1.75;display:block;min-height:88px;text-align:left}
 .loop-hint{font-size:10px;color:var(--tm);letter-spacing:.1em;text-transform:uppercase;margin-top:20px;display:block;transition:opacity .4s}
 
-@media(max-width:960px){
-  .loop-section{grid-template-columns:1fr;gap:32px}
-  .loop-center{max-width:340px}
-  .loop-panel-title{min-height:auto}
-  .loop-panel-body{min-height:auto}
-}
-
 /* FINAL CTA */
 .fcta{text-align:center;padding:110px 48px;position:relative;overflow:hidden;background:var(--s);border-top:1px solid #111}
-.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,4vw,50px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:700px;margin:0 auto 16px;line-height:1.05}
+.fcta h2{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,4vw,50px);text-transform:uppercase;letter-spacing:-.02em;color:#fff;max-width:700px;margin:0 auto 16px;line-height:1.05}
 .fcta p{font-size:17px;color:var(--ts);margin-bottom:32px}
 
 /* FOOTER */
@@ -166,41 +159,22 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 .fline{height:1px;background:var(--grad);margin-bottom:28px;border:none}
 .fbot{border-top:1px solid #111;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-/* LOOP DOTS */
-.loop-wrap{position:relative;display:block;width:100%}
-.loop-wrap img{width:100%;display:block;aspect-ratio:1/1;object-fit:contain}
-.ldot{position:absolute;width:16px;height:16px;border-radius:50%;cursor:pointer;transform:translate(-50%,-50%);z-index:2}
-.ldot::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--dc,#00ac69);opacity:.9;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-.ldot::after{content:'';position:absolute;inset:-6px;border-radius:50%;background:var(--dc,#00ac69);opacity:.2;animation:ldpulse 2s ease-in-out infinite}
-.ldot:hover::before{transform:scale(1.5)}
-.ldot:hover::after{opacity:.4;animation:none}
-.ldot:nth-child(n+4){--dc:#001689}
-@keyframes ldpulse{0%,100%{transform:scale(1);opacity:.2}50%{transform:scale(2);opacity:.05}}
-.ldot .tip{position:absolute;left:50%;transform:translateX(-50%) translateY(8px);bottom:calc(100% + 14px);background:#0f0f0f;border:1px solid #1a2a1a;border-radius:12px;padding:14px 16px;width:200px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;white-space:normal;z-index:10}
-.ldot .tip.flip{bottom:auto;top:calc(100% + 14px);transform:translateX(-50%) translateY(-8px)}
-.ldot:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)}
-.ldot:hover .tip.flip{transform:translateX(-50%) translateY(0)}
-.tip-eye{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dc,#00ac69);margin-bottom:5px}
-.tip-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;color:#fff;margin-bottom:4px;line-height:1.3}
-.tip-body{font-size:11px;color:#9a9a9a;line-height:1.55}
-
 /* ANIMATIONS */
 .fu{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .fu.on{opacity:1;transform:none}
-
-/* SECTION SCROLL OFFSET (for anchor nav) */
 .section-anchor{scroll-margin-top:88px}
 
-@media(max-width:860px){
-  .nav-center{display:none}
-  .hamburger{display:flex}
-  .ncta-desk{display:none}
+@media(max-width:960px){
+  .loop-section{grid-template-columns:1fr;gap:32px}
+  .loop-center{max-width:340px}
+  .loop-panel-title{min-height:auto}
+  .loop-panel-body{min-height:auto}
 }
+@media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
 @media(max-width:768px){
   section,.fi,.fcta,footer{padding-left:20px;padding-right:20px}
   .svgrid,.diff-grid,.detail-grid{grid-template-columns:1fr}
   .sgrid{grid-template-columns:repeat(2,1fr)}
-  .loop-layout{grid-template-columns:1fr}
   .intro-split,.svc-split{grid-template-columns:1fr!important}
   .fg{grid-template-columns:1fr}
   .svc-pair{grid-template-columns:1fr!important}
@@ -226,7 +200,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <a class="ncta ncta-desk" href="contact.html">LET'S TALK</a>
+    <a class="ncta" href="contact.html">LET'S TALK</a>
     <div class="hamburger" onclick="document.getElementById('mm').classList.add('open')">
       <span></span><span></span><span></span>
     </div>
@@ -264,32 +238,30 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- INTRO SPLIT -->
 <section class="fu">
   <div class="intro-split" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
-    <div class="qblock">
-      <p>"We don't just execute —<br/>we architect."</p>
-    </div>
+    <div class="qblock"><p>"We don't just execute —<br/>we architect."</p></div>
     <p style="font-size:16px;color:var(--ts);line-height:1.8">At Unlimitify we bridge the gap between your potential and the US consumer. Every service we offer is part of a single integrated system — designed to compound, not just execute.</p>
   </div>
 </section>
 
-<!-- ALL 6 SERVICES OVERVIEW -->
+<!-- SERVICES OVERVIEW -->
 <div class="fw" style="background:var(--s)" id="services-overview">
   <div class="fi">
     <div class="ey">What we do</div>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:16px">
       <h2 class="st" style="margin-bottom:0;max-width:560px">Strategic Infrastructure<br/>for Global Growth</h2>
-      <p style="font-size:15px;color:var(--ts);max-width:340px;line-height:1.65;text-align:right">We don't just manage accounts — we architect the entire ecosystem your brand needs to own the US market.</p>
+      <p style="font-size:15px;color:var(--ts);max-width:340px;line-height:1.65;text-align:right">One partner, zero gaps.</p>
     </div>
     <div class="svgrid" id="svc-grid"></div>
   </div>
 </div>
 
-<!-- SERVICE 01: DIGITAL GO TO MARKET -->
+<!-- SERVICE 01 -->
 <section class="fu section-anchor" id="digital-gtm">
-  <div class="svc-split" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+  <div class="svc-split" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
     <div>
       <div class="ey">Service 01</div>
       <h2 class="st">Digital Go<br/>to Market</h2>
-      <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:28px">We build the complete commercial infrastructure your brand needs to enter and win in US digital marketplaces. From account architecture to full channel integration — 1P, 3P, hybrid.</p>
+      <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:28px">We build the complete commercial infrastructure your brand needs to enter and win in US digital marketplaces.</p>
       <ul class="sv-list">
         <li><span>→</span>Amazon 1P & 3P full account setup and brand registry</li>
         <li><span>→</span>Walmart.com onboarding and catalog syndication</li>
@@ -298,28 +270,28 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
       </ul>
     </div>
     <div class="detail-grid">
-      <div class="detail-card"><div class="detail-tag">Channel</div><h4>Amazon 1P & 3P</h4><p>Full account setup, brand registry, A+ content, storefront, and vendor/seller strategy tailored to your margin model.</p></div>
-      <div class="detail-card"><div class="detail-tag">Platform</div><h4>Walmart & Retail Media</h4><p>Walmart.com onboarding, catalog syndication, and retail media activation for maximum shelf visibility.</p></div>
-      <div class="detail-card"><div class="detail-tag">Listings</div><h4>Catalog Optimization</h4><p>SEO-driven titles, bullets, and backend keywords. Every listing engineered to rank and convert.</p></div>
-      <div class="detail-card"><div class="detail-tag">Brand</div><h4>Brand Store & A+ Content</h4><p>Premium branded experiences that build trust, reduce bounce, and increase basket size.</p></div>
+      <div class="detail-card"><div class="detail-tag">Channel</div><h4>Amazon 1P & 3P</h4><p>Full account setup, brand registry, A+ content, storefront, and vendor/seller strategy.</p></div>
+      <div class="detail-card"><div class="detail-tag">Platform</div><h4>Walmart & Retail Media</h4><p>Walmart.com onboarding, catalog syndication, and retail media activation.</p></div>
+      <div class="detail-card"><div class="detail-tag">Listings</div><h4>Catalog Optimization</h4><p>SEO-driven titles, bullets, and backend keywords. Every listing engineered to convert.</p></div>
+      <div class="detail-card"><div class="detail-tag">Brand</div><h4>Brand Store & A+ Content</h4><p>Premium branded experiences that build trust and increase basket size.</p></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICE 02: BACK-END OPERATIONS -->
+<!-- SERVICE 02 -->
 <div class="fw" style="background:var(--s)">
   <div class="fi fu section-anchor" id="backend-ops">
     <div class="svc-split" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
       <div class="detail-grid">
-        <div class="detail-card"><div class="detail-tag">Finance</div><h4>Chargeback Recovery</h4><p>Systematic dispute management that recovers lost margin from vendor chargebacks — often 2–5% of revenue.</p></div>
-        <div class="detail-card"><div class="detail-tag">Ops</div><h4>Resource Planning</h4><p>Demand forecasting, replenishment logic, and inventory health monitoring to prevent stockouts and overstock.</p></div>
-        <div class="detail-card"><div class="detail-tag">Margin</div><h4>Cost Structure Audit</h4><p>Line-by-line P&L analysis identifying hidden fees, inefficiencies, and margin leakage across your stack.</p></div>
-        <div class="detail-card"><div class="detail-tag">Reporting</div><h4>Operations Dashboard</h4><p>Real-time visibility into every operational KPI — fulfillment, returns, defect rate, and profitability.</p></div>
+        <div class="detail-card"><div class="detail-tag">Finance</div><h4>Chargeback Recovery</h4><p>Systematic dispute management recovering 2–5% of lost revenue.</p></div>
+        <div class="detail-card"><div class="detail-tag">Ops</div><h4>Resource Planning</h4><p>Demand forecasting and inventory health monitoring.</p></div>
+        <div class="detail-card"><div class="detail-tag">Margin</div><h4>Cost Structure Audit</h4><p>Line-by-line P&L analysis identifying hidden fees and margin leakage.</p></div>
+        <div class="detail-card"><div class="detail-tag">Reporting</div><h4>Operations Dashboard</h4><p>Real-time visibility into fulfillment, returns, defect rate, and profitability.</p></div>
       </div>
       <div>
         <div class="ey">Service 02</div>
         <h2 class="st">Back-End<br/>Operations</h2>
-        <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:28px">The infrastructure behind the brand. We protect your margins, optimize your supply chain, and eliminate the operational friction that quietly kills profitability.</p>
+        <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:28px">The infrastructure behind the brand. We protect your margins, optimize your supply chain, and eliminate operational friction.</p>
         <ul class="sv-list">
           <li><span>→</span>Chargeback recovery — recover 2–5% of lost revenue</li>
           <li><span>→</span>Demand forecasting and replenishment automation</li>
@@ -331,17 +303,16 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   </div>
 </div>
 
-<!-- SERVICE 03 + 04: MARKET ANALYSIS + ADMIN -->
+<!-- SERVICES 03 + 04 -->
 <section class="fu">
   <div class="ey">Services 03 & 04</div>
-  <h2 class="st" style="margin-bottom:36px">Analysis & Administration</h2>
+  <h2 class="st" style="margin-bottom:28px">Analysis & Administration</h2>
   <div class="svc-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-
     <div class="section-anchor" id="market-analysis" style="background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:36px;position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)"></div>
       <div class="ey">Service 03</div>
-      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,34px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Market<br/>Analysis</h3>
-      <p style="font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:24px">Deep opportunity audits that reveal where to compete, how to win, and what to avoid. We map the full battlefield before you spend a dollar.</p>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px;line-height:1.05">Market<br/>Analysis</h3>
+      <p style="font-size:14px;color:var(--ts);line-height:1.7;margin-bottom:20px">Deep opportunity audits that reveal where to compete, how to win, and what to avoid.</p>
       <ul class="sv-list">
         <li><span>→</span>Category TAM & competitive mapping</li>
         <li><span>→</span>Consumer behavior & search demand analysis</li>
@@ -349,12 +320,11 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
         <li><span>→</span>White space & entry point identification</li>
       </ul>
     </div>
-
     <div class="section-anchor" id="admin-services" style="background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:36px;position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)"></div>
       <div class="ey">Service 04</div>
-      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,34px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Administrative<br/>Services</h3>
-      <p style="font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:24px">The back-office infrastructure most brands ignore until it's a problem. We handle the legal, financial, and regulatory complexity of operating in the US market.</p>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px;line-height:1.05">Administrative<br/>Services</h3>
+      <p style="font-size:14px;color:var(--ts);line-height:1.7;margin-bottom:20px">The back-office infrastructure most brands ignore until it's a problem.</p>
       <ul class="sv-list">
         <li><span>→</span>US entity setup & compliance</li>
         <li><span>→</span>Tax, finance & regulatory affairs</li>
@@ -362,44 +332,39 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
         <li><span>→</span>Vendor agreements & contract review</li>
       </ul>
     </div>
-
   </div>
 </section>
 
-<!-- SERVICE 05 + 06: STRATEGIC CONSULTING + CREATIVE -->
+<!-- SERVICES 05 + 06 -->
 <div class="fw" style="background:var(--s)">
   <div class="fi fu">
     <div class="ey">Services 05 & 06</div>
-    <h2 class="st" style="margin-bottom:36px">Strategy & Creative</h2>
+    <h2 class="st" style="margin-bottom:28px">Strategy & Creative</h2>
     <div class="svc-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-
       <div class="section-anchor" id="strategic-consulting" style="background:var(--s2);border:1px solid #1a1a1a;border-radius:16px;padding:36px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)"></div>
         <div class="ey">Service 05</div>
-        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,34px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Strategic<br/>Consulting</h3>
-        <p style="font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:24px">Where to play. How to win. We translate market data into clear growth mandates — then build the roadmap to execute them.</p>
-        <ul class="sv-list" style="border-color:#252525">
-          <li style="border-color:#252525"><span>→</span>Revenue acceleration strategy</li>
-          <li style="border-color:#252525"><span>→</span>Portfolio & SKU rationalization</li>
-          <li style="border-color:#252525"><span>→</span>Channel conflict & pricing architecture</li>
-          <li style="border-color:#252525"><span>→</span>90-day growth sprints</li>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px;line-height:1.05">Strategic<br/>Consulting</h3>
+        <p style="font-size:14px;color:var(--ts);line-height:1.7;margin-bottom:20px">Where to play. How to win. We translate market data into clear growth mandates.</p>
+        <ul class="sv-list">
+          <li><span>→</span>Revenue acceleration strategy</li>
+          <li><span>→</span>Portfolio & SKU rationalization</li>
+          <li><span>→</span>Channel conflict & pricing architecture</li>
+          <li><span>→</span>90-day growth sprints</li>
         </ul>
       </div>
-
       <div class="section-anchor" id="creative-strategy" style="background:var(--s2);border:1px solid #1a1a1a;border-radius:16px;padding:36px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)"></div>
         <div class="ey">Service 06</div>
-        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,34px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Creative<br/>Strategy</h3>
-        <p style="font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:24px">High-conversion creative built for the US consumer. We don't just make things look good — we engineer assets that perform at every touchpoint.</p>
-        <ul class="sv-list" style="border-color:#252525">
-          <li style="border-color:#252525"><span>→</span>Listing photography & video</li>
-          <li style="border-color:#252525"><span>→</span>A+ content & brand story design</li>
-          <li style="border-color:#252525"><span>→</span>Paid social & display creative</li>
-          <li style="border-color:#252525"><span>→</span>Hispanic market localization</li>
-        </ul>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);color:#fff;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px;line-height:1.05">Creative<br/>Strategy</h3>
+        <p style="font-size:14px;color:var(--ts);line-height:1.7;margin-bottom:20px">High-conversion creative built for the US consumer.</p>
+        <ul class="sv-list">
+          <li><span>→</span>Listing photography & video</li>
+          <li><span>→</span>A+ content & brand story design</li>
+          <li><span>→</span>Paid social & display creative</li>
+          <li><span>→</span>Hispanic market localization</li>
         </ul>
       </div>
-
     </div>
   </div>
 </div>
@@ -410,13 +375,13 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   <h2 class="st">Why Unlimitify</h2>
   <p class="ss">We've scaled 50+ brands in the US market. Here's what makes our approach different.</p>
   <div class="diff-grid">
-    <div class="diff-card"><div class="diff-n gt">01</div><div class="diff-t">We Architect, Not Manage</div><div class="diff-b">We build the entire ecosystem — strategy, creative, operations, analytics — so your brand compounds instead of plateaus.</div></div>
-    <div class="diff-card"><div class="diff-n gt">02</div><div class="diff-t">Hispanic Market Specialists</div><div class="diff-b">330 million consumers. The fastest-growing economic segment in US eCommerce. We know this market from the inside out.</div></div>
-    <div class="diff-card"><div class="diff-n gt">03</div><div class="diff-t">Full-Service Infrastructure</div><div class="diff-b">From creative to chargeback recovery, market entry to regulatory compliance — one partner, zero gaps.</div></div>
+    <div class="diff-card"><div class="diff-n">01</div><div class="diff-t">We Architect, Not Manage</div><div class="diff-b">We build the entire ecosystem so your brand compounds instead of plateaus.</div></div>
+    <div class="diff-card"><div class="diff-n">02</div><div class="diff-t">Hispanic Market Specialists</div><div class="diff-b">330 million consumers. The fastest-growing segment in US eCommerce.</div></div>
+    <div class="diff-card"><div class="diff-n">03</div><div class="diff-t">Full-Service Infrastructure</div><div class="diff-b">From creative to chargeback recovery — one partner, zero gaps.</div></div>
   </div>
 </section>
 
-<!-- IMPACT NUMBERS -->
+<!-- IMPACT -->
 <div class="fw" style="background:var(--s)">
   <div class="fi fu">
     <div class="ey">The impact</div>
@@ -430,31 +395,37 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   </div>
 </div>
 
-<!-- GROWTH LOOP INTERACTIVE -->
+<!-- GROWTH LOOP -->
 <section class="fu">
   <div class="ey">Our process</div>
   <h2 class="st">The Unlimitify Growth Loop</h2>
   <p class="ss">Every service feeds into the same six-phase loop — a continuous cycle engineered to compound your growth over time.</p>
-  <div class="loop-layout">
-    <div class="stepper" id="svc-stepper"></div>
-    <div style="position:relative">
-    <div style="position:relative;display:inline-block;width:100%">
-      <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop" style="width:100%;display:block;aspect-ratio:400/260;object-fit:contain"/>
-      <div style="position:absolute;inset:0">
-        <div class="ldot" style="top:18%;left:22%" onclick="activateStep(0)"></div>
-        <div class="ldot" style="top:50%;left:8%"  onclick="activateStep(1)"></div>
-        <div class="ldot" style="top:78%;left:37%" onclick="activateStep(2)"></div>
-        <div class="ldot" style="top:18%;left:72%" onclick="activateStep(3)"></div>
-        <div class="ldot" style="top:50%;left:88%" onclick="activateStep(4)"></div>
-        <div class="ldot" style="top:78%;left:58%" onclick="activateStep(5)"></div>
+  <div class="loop-section" id="loop-section">
+    <svg class="loop-connector">
+      <defs>
+        <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00ac69" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#001689" stop-opacity="0.4"/>
+        </linearGradient>
+      </defs>
+      <path class="loop-connector-line" id="conn-line"/>
+    </svg>
+    <div class="loop-center">
+      <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop"/>
+      <div class="ldot" data-i="0" style="top:14%;left:27%">1</div>
+      <div class="ldot" data-i="1" style="top:50%;left:10%">2</div>
+      <div class="ldot" data-i="2" style="top:86%;left:31%">3</div>
+      <div class="ldot" data-i="3" style="top:14%;left:73%">4</div>
+      <div class="ldot" data-i="4" style="top:50%;left:90%">5</div>
+      <div class="ldot" data-i="5" style="top:86%;left:69%">6</div>
+    </div>
+    <div class="loop-panel">
+      <div class="loop-panel-inner" id="loop-panel">
+        <span class="loop-panel-eye" id="loop-panel-eye"></span>
+        <span class="loop-panel-title" id="loop-panel-title"></span>
+        <span class="loop-panel-body" id="loop-panel-body"></span>
       </div>
-    </div>
-    <p style="text-align:center;font-size:10px;color:var(--tm);letter-spacing:.08em;text-transform:uppercase;margin-top:6px">hover a step or tap a dot to explore</p>
-    </div>
-    <div class="loop-popup" id="svc-popup">
-      <div class="popup-eye" id="svc-pe"></div>
-      <div class="popup-title" id="svc-pt">Hover a step</div>
-      <div class="popup-body" id="svc-pb" style="color:var(--tm)">Select any step on the left or a dot on the loop to explore each phase.</div>
+      <p class="loop-hint" id="loop-hint">Hover a number to explore each phase</p>
     </div>
   </div>
 </section>
@@ -476,7 +447,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
         <img src="./images/Icon_Color_Inv.png" alt="Unlimitify" style="height:20px;width:auto"/>
         <span style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em">UNLIMITIFY</span>
       </div>
-      <p class="fdesc">The bridge between your brand and 330 million consumers. We engineer eCommerce ecosystems that dominate the US market.</p>
+      <p class="fdesc">The bridge between your brand and 330 million consumers.</p>
     </div>
     <div class="fcol">
       <h4>Navigate</h4>
@@ -490,7 +461,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     <div class="fcol">
       <h4>Contact</h4>
       <span style="font-size:13px;color:var(--g)">sales@unlimitify.com</span>
-      <p style="font-size:12px;color:var(--tm);margin-top:8px;line-height:1.7">USA · Mexico · Brazil · Canada</p>
+      <p style="font-size:12px;color:var(--tm);margin-top:8px;line-height:1.7">USA · Mexico · Brazil · Canada · Spain · Argentina · Colombia</p>
     </div>
   </div>
   <div class="fbot">
@@ -501,22 +472,31 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 
 <script>
 const SVCS=[
-  {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P models on Amazon, Walmart, and major US marketplaces.',href:'#digital-gtm'},
-  {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and operational margin protection.',href:'#backend-ops'},
-  {ic:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',t:'Market Analysis',b:'Deep opportunity audits analyzing category dynamics and competitor weaknesses to identify your strategic advantage.',href:'#market-analysis'},
-  {ic:'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',t:'Administrative Services',b:'Comprehensive back-office support: legal, finance, and regulatory affairs for a frictionless US operation.',href:'#admin-services'},
-  {ic:'M13 10V3L4 14h7v7l9-11h-7z',t:'Strategic Consulting',b:"Data-driven 'Where to Play' and 'How to Win' strategies focused on sustainable revenue acceleration.",href:'#strategic-consulting'},
+  {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P on Amazon, Walmart, and major US marketplaces.',href:'#digital-gtm'},
+  {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and margin protection.',href:'#backend-ops'},
+  {ic:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',t:'Market Analysis',b:'Deep opportunity audits analyzing category dynamics and competitor weaknesses.',href:'#market-analysis'},
+  {ic:'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',t:'Administrative Services',b:'Comprehensive back-office support: legal, finance, and regulatory affairs.',href:'#admin-services'},
+  {ic:'M13 10V3L4 14h7v7l9-11h-7z',t:'Strategic Consulting',b:"Data-driven 'Where to Play' and 'How to Win' strategies for sustainable growth.",href:'#strategic-consulting'},
   {ic:'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',t:'Creative Strategy',b:'High-impact visual assets and storytelling designed to convert the US consumer at scale.',href:'#creative-strategy'}
 ];
 
+const STEPS=[
+  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
+  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
+  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
+  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
+  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
+  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
+];
+
+// Service cards
 const sg=document.getElementById('svc-grid');
-sg.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
+if(sg) sg.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
   <svg class="svico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <defs><linearGradient id="ig${i}" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00ac69"/><stop offset="100%" stop-color="#001689"/></linearGradient></defs>
     <path d="${s.ic}" stroke="url(#ig${i})"/>
   </svg>
-  <h3>${s.t}</h3>
-  <p>${s.b}</p>
+  <h3>${s.t}</h3><p>${s.b}</p>
   <div class="sv-arrow">EXPLORE ↓</div>
 </a>`).join('');
 
@@ -578,7 +558,7 @@ window.addEventListener('resize',()=>{
   if(activeDot)drawConnector(activeDot);
 });
 
-// Scroll & fade
+// Scroll
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',scrollY>40);
   triggerAll();
@@ -607,9 +587,8 @@ function triggerCounters(){
   });
 }
 
-function triggerAll(){triggerFades();triggerCounters();}
+function triggerAll(){triggerFades();triggerCounters();triggerLoop();}
 
-// Hero stagger
 ['hl','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
 </script>
