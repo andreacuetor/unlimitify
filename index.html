@@ -130,7 +130,8 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 
 /* LOOP PANEL RIGHT */
 .loop-panel{z-index:1;display:flex;flex-direction:column}
-.loop-panel-inner{opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1)}
+.loop-panel-inner{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:28px 32px;position:relative;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1)}
+.loop-panel-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
 .loop-panel-inner.vis{opacity:1;transform:translateY(0)}
 .loop-panel-eye{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;display:block;min-height:16px}
 .loop-panel-eye.sg{color:var(--g)}.loop-panel-eye.sb{color:#4a7fff}
@@ -320,12 +321,12 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     <div class="loop-center">
       <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop"/>
       <!-- Dots outside the loop path, numbered 1-6 -->
-      <div class="ldot" data-i="0" style="top:14%;left:26%">1</div>
-      <div class="ldot" data-i="1" style="top:50%;left:4%">2</div>
-      <div class="ldot" data-i="2" style="top:86%;left:30%">3</div>
-      <div class="ldot" data-i="3" style="top:14%;left:74%">4</div>
-      <div class="ldot" data-i="4" style="top:50%;left:96%">5</div>
-      <div class="ldot" data-i="5" style="top:86%;left:70%">6</div>
+      <div class="ldot" data-i="0" style="top:14%;left:27%">1</div>
+      <div class="ldot" data-i="1" style="top:50%;left:10%">2</div>
+      <div class="ldot" data-i="2" style="top:86%;left:31%">3</div>
+      <div class="ldot" data-i="3" style="top:14%;left:73%">4</div>
+      <div class="ldot" data-i="4" style="top:50%;left:90%">5</div>
+      <div class="ldot" data-i="5" style="top:86%;left:69%">6</div>
     </div>
 
     <!-- PANEL RIGHT -->
@@ -545,7 +546,17 @@ function triggerCounters(){
     }
   });
 }
-function triggerAll(){triggerFades();triggerKPIs();triggerCounters();}
+function triggerAll(){triggerFades();triggerKPIs();triggerCounters();triggerLoop();}
+
+let loopTriggered=false;
+function triggerLoop(){
+  if(loopTriggered)return;
+  const section=document.querySelector('.loop-section');
+  if(section&&section.getBoundingClientRect().top<window.innerHeight-100){
+    loopTriggered=true;
+    activateLoopStep(0);
+  }
+}
 
 ['hlw','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
