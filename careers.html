@@ -33,14 +33,19 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 @media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
 
 /* HERO */
-.hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 60px}
+.hero{min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
-.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
-@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
-@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
+#network-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero-content{position:relative;z-index:1}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:18px}
-.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:520px;line-height:1.7}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:520px;line-height:1.7;margin:0 auto}
+
+/* HERO STATS ROW */
+.hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.hero-stat{display:flex;flex-direction:column;align-items:center;gap:4px}
+.hero-stat-num{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hero-stat-label{font-size:11px;color:var(--tm);letter-spacing:.08em;text-transform:uppercase}
+.hero-stat-divider{width:1px;height:40px;background:rgba(255,255,255,.08);align-self:center}
 
 /* LAYOUT */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
@@ -71,11 +76,9 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .roles-empty-icon{width:56px;height:56px;border-radius:50%;background:rgba(0,172,105,.08);border:1px solid rgba(0,172,105,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
 .roles-empty h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:20px;color:#fff;margin-bottom:10px}
 .roles-empty p{font-size:14px;color:var(--ts);line-height:1.7;max-width:440px;margin:0 auto 28px}
-
 .role-card{background:var(--s);border:1px solid #1a1a1a;border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:border-color .3s,transform .2s;margin-bottom:10px;flex-wrap:wrap}
 .role-card:hover{border-color:#252525;transform:translateX(4px)}
 .role-card:last-child{margin-bottom:0}
-.role-info{}
 .role-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:#fff;margin-bottom:6px}
 .role-meta{display:flex;gap:12px;flex-wrap:wrap}
 .role-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tm);background:var(--s2);border:1px solid #1e1e1e;border-radius:100px;padding:4px 12px}
@@ -125,6 +128,8 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   .apply-grid{grid-template-columns:1fr!important}
   .fg{grid-template-columns:1fr}
   .role-card{flex-direction:column;align-items:flex-start}
+  .hero-stats{gap:20px}
+  .hero-stat-divider{display:none}
 }
 </style>
 </head>
@@ -168,10 +173,34 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- HERO -->
 <div class="hero">
   <div class="dots"></div>
-  <div class="gl"></div>
-  <div class="gr"></div>
-  <div class="fu" id="h1w"><h1>Join the Loop</h1></div>
-  <div class="fu" id="h2w"><p>Help us scale brands across the US market. We're looking for operators, not order-takers.</p></div>
+  <canvas id="network-canvas"></canvas>
+
+  <div class="hero-content">
+    <div class="fu" id="h1w"><h1>Join the Loop</h1></div>
+    <div class="fu" id="h2w"><p>Help us scale brands across the US market. We're looking for operators, not order-takers.</p></div>
+
+    <div class="hero-stats fu" id="h3w">
+      <div class="hero-stat">
+        <div class="hero-stat-num">14</div>
+        <div class="hero-stat-label">Active Clients</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">Markets</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Remote</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$150M+</div>
+        <div class="hero-stat-label">Revenue Managed</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- CULTURE -->
@@ -207,7 +236,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 
   <!-- 
     TO ADD ROLES: replace the .roles-empty block below with .role-card blocks.
-    Example role card:
+    Example:
     <div class="role-card">
       <div class="role-info">
         <div class="role-title">Amazon Account Manager</div>
@@ -259,7 +288,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 
       <!-- FORM -->
       <div class="form-wrap">
-        <form id="careers-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleSubmit(event)">
+        <form id="careers-form" action="https://formspree.io/f/xojpagjn" method="POST" onsubmit="handleSubmit(event)">
           <input type="hidden" name="_subject" value="New Career Application — Unlimitify"/>
 
           <div class="form-row">
@@ -348,42 +377,150 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </footer>
 
 <script>
+/* ── NETWORK CANVAS ─────────────────────────────────── */
+(function(){
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [], animId;
+
+  const NODE_COUNT = 42;
+  const MAX_DIST = 160;
+  const SPEED = 0.35;
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeNode(){
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - .5) * SPEED,
+      vy: (Math.random() - .5) * SPEED,
+      r: Math.random() * 2 + 1.5
+    };
+  }
+
+  function init(){
+    resize();
+    nodes = Array.from({length: NODE_COUNT}, makeNode);
+  }
+
+  // gradient stops for node & line color based on x position
+  function nodeColor(x, alpha){
+    // interpolate green → blue across width
+    const t = Math.max(0, Math.min(1, x / W));
+    const r = Math.round((1 - t) * 0 + t * 0);
+    const g = Math.round((1 - t) * 172 + t * 22);
+    const b = Math.round((1 - t) * 105 + t * 137);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+
+    // draw edges
+    for(let i = 0; i < nodes.length; i++){
+      for(let j = i + 1; j < nodes.length; j++){
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < MAX_DIST){
+          const alpha = (1 - dist / MAX_DIST) * 0.28;
+          const midX = (nodes[i].x + nodes[j].x) / 2;
+          const grad = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+          grad.addColorStop(0, nodeColor(nodes[i].x, alpha));
+          grad.addColorStop(1, nodeColor(nodes[j].x, alpha));
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // draw nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = nodeColor(n.x, 0.7);
+      ctx.fill();
+      // glow
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+      ctx.fillStyle = nodeColor(n.x, 0.06);
+      ctx.fill();
+    });
+  }
+
+  function update(){
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if(n.x < 0 || n.x > W) n.vx *= -1;
+      if(n.y < 0 || n.y > H) n.vy *= -1;
+    });
+  }
+
+  function loop(){
+    update();
+    draw();
+    animId = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    nodes.forEach(n => {
+      n.x = Math.min(n.x, W);
+      n.y = Math.min(n.y, H);
+    });
+  });
+
+  init();
+  loop();
+})();
+
+/* ── FORM ──────────────────────────────────────────── */
 async function handleSubmit(e){
   e.preventDefault();
-  const btn=document.getElementById('form-btn');
-  const status=document.getElementById('form-status');
-  const form=document.getElementById('careers-form');
-  btn.textContent='Sending…';
-  btn.disabled=true;
+  const btn = document.getElementById('form-btn');
+  const status = document.getElementById('form-status');
+  const form = document.getElementById('careers-form');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
   try{
-    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    const res = await fetch(form.action, {method:'POST', body:new FormData(form), headers:{Accept:'application/json'}});
     if(res.ok){
-      btn.textContent='✓ Application received!';
-      btn.style.background='#00ac69';
-      status.textContent='We\'ll be in touch if there\'s a match.';
+      btn.textContent = '✓ Application received!';
+      btn.style.background = '#00ac69';
+      status.textContent = 'We\'ll be in touch if there\'s a match.';
       form.reset();
     } else throw new Error();
   } catch{
-    btn.textContent='SEND APPLICATION';
-    btn.disabled=false;
-    status.style.color='#ff6b6b';
-    status.textContent='Something went wrong — please email sales@unlimitify.com directly.';
+    btn.textContent = 'SEND APPLICATION';
+    btn.disabled = false;
+    status.style.color = '#ff6b6b';
+    status.textContent = 'Something went wrong — please email sales@unlimitify.com directly.';
   }
 }
 
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('sc',scrollY>40);
+/* ── SCROLL & FADES ────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('sc', scrollY > 40);
   triggerFades();
 });
 
 function triggerFades(){
-  document.querySelectorAll('.fu:not(.on)').forEach(el=>{
-    if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
+  document.querySelectorAll('.fu:not(.on)').forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('on');
   });
 }
 
-['h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
-setTimeout(triggerFades,300);
+['h1w','h2w','h3w'].forEach((id,i) => setTimeout(() => document.getElementById(id)?.classList.add('on'), 200 + i * 160));
+setTimeout(triggerFades, 300);
 </script>
 </body>
 </html>
