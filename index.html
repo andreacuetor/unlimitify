@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -35,7 +35,7 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:80px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.hero-logo{width:min(520px,86vw);margin-bottom:44px}
+.hero-logo{width:min(520px,86vw);margin-bottom:44px;will-change:transform;transition:transform .1s linear}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:20px}
 .hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:540px;line-height:1.7;margin-bottom:36px}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
@@ -97,20 +97,11 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .svcard p{font-size:14px;color:var(--ts);line-height:1.65}
 
 /* GROWTH LOOP */
-.loop-section{display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;position:relative}
-.loop-section::before{content:'';position:absolute;inset:-60px;background:radial-gradient(ellipse at 35% 50%,rgba(0,172,105,.15) 0%,transparent 50%),radial-gradient(ellipse at 65% 50%,rgba(0,22,137,.18) 0%,transparent 50%);pointer-events:none;animation:lglow 4s ease-in-out infinite alternate;z-index:0}
-@keyframes lglow{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.05)}}
-.loop-center{position:relative;width:440px;height:440px;flex-shrink:0;margin:0 auto;z-index:1}
-.loop-center img{width:100%;height:100%;object-fit:contain;display:block}
-
-/* GROWTH LOOP */
 .loop-section{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:center;position:relative}
 .loop-section::before{content:'';position:absolute;inset:-80px;background:radial-gradient(ellipse at 35% 50%,rgba(0,172,105,.13) 0%,transparent 50%),radial-gradient(ellipse at 65% 50%,rgba(0,22,137,.15) 0%,transparent 50%);pointer-events:none;animation:lglow 4s ease-in-out infinite alternate;z-index:0}
 @keyframes lglow{from{opacity:.7}to{opacity:1}}
 .loop-center{position:relative;width:100%;aspect-ratio:1/1;max-width:480px;margin:0 auto;z-index:1}
 .loop-center img{width:100%;height:100%;object-fit:contain;display:block}
-
-/* DOTS — numbered, outside loop, gradient green→blue */
 .ldot{position:absolute;width:32px;height:32px;border-radius:50%;cursor:pointer;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:12px;color:#fff;border:1.5px solid rgba(255,255,255,.15);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s}
 .ldot::after{content:'';position:absolute;inset:-6px;border-radius:50%;opacity:.12;animation:ldpulse 2.5s ease-in-out infinite;z-index:-1;pointer-events:none}
 .ldot[data-i="0"]{background:linear-gradient(135deg,#00ac69,#009980)}.ldot[data-i="0"]::after{background:#00ac69}
@@ -127,8 +118,6 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .ldot[data-i="4"]:hover,.ldot[data-i="4"].active{box-shadow:0 0 16px 5px rgba(0,47,163,.5)}
 .ldot[data-i="5"]:hover,.ldot[data-i="5"].active{box-shadow:0 0 16px 5px rgba(0,22,137,.5)}
 @keyframes ldpulse{0%,100%{transform:scale(1);opacity:.12}50%{transform:scale(2.2);opacity:.03}}
-
-/* LOOP PANEL RIGHT */
 .loop-panel{z-index:1;display:flex;flex-direction:column}
 .loop-panel-inner{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:28px 32px;position:relative;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1)}
 .loop-panel-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
@@ -138,6 +127,10 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .loop-panel-title{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:28px;color:#fff;margin-bottom:12px;display:block;line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;min-height:64px}
 .loop-panel-body{font-size:15px;color:var(--ts);line-height:1.75;display:block;min-height:80px}
 .loop-hint{font-size:10px;color:var(--tm);letter-spacing:.1em;text-transform:uppercase;margin-top:28px;display:block;transition:opacity .3s}
+
+/* auto-tour progress bar */
+.loop-progress{height:2px;background:#1a1a1a;border-radius:100px;margin-top:16px;overflow:hidden}
+.loop-progress-fill{height:2px;background:var(--grad);width:0;transition:width linear}
 
 /* CONNECTOR LINE */
 .loop-connector{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
@@ -206,7 +199,6 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   .svgrid,.tgrid{grid-template-columns:1fr}
   .csphases{grid-template-columns:repeat(2,1fr)}
   .loop-center{width:100%;height:auto;aspect-ratio:1/1;max-width:300px;margin:0 auto}
-  .loop-panel{padding-left:0;padding-right:0}
   .fg{grid-template-columns:1fr}
 }
 </style>
@@ -250,7 +242,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </div>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="hero-section">
   <div class="dots"></div>
   <div class="hero-logo fu" id="hlw" style="-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 55%,transparent 100%)">
     <video autoplay loop muted playsinline style="width:100%;display:block;mix-blend-mode:screen">
@@ -320,7 +312,6 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
   <p class="ss">Six phases. One continuous loop. The methodology behind every brand we've scaled in the US market.</p>
 
   <div class="loop-section" id="loop-section">
-    <!-- SVG connector overlay -->
     <svg class="loop-connector" id="loop-svg">
       <defs>
         <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -330,10 +321,8 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
       </defs>
       <path class="loop-connector-line" id="conn-line"/>
     </svg>
-    <!-- LOOP IMAGE + DOTS -->
     <div class="loop-center">
       <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Growth Loop"/>
-      <!-- Dots outside the loop path, numbered 1-6 -->
       <div class="ldot" data-i="0" style="top:14%;left:27%">1</div>
       <div class="ldot" data-i="1" style="top:50%;left:10%">2</div>
       <div class="ldot" data-i="2" style="top:86%;left:31%">3</div>
@@ -342,14 +331,15 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
       <div class="ldot" data-i="5" style="top:86%;left:69%">6</div>
     </div>
 
-    <!-- PANEL RIGHT -->
     <div class="loop-panel">
-<div class="loop-panel-inner" id="loop-panel">
+      <div class="loop-counter" id="loop-counter"></div>
+      <div class="loop-panel-inner" id="loop-panel">
         <span class="loop-panel-eye" id="loop-panel-eye"></span>
         <span class="loop-panel-title" id="loop-panel-title"></span>
         <span class="loop-panel-body" id="loop-panel-body"></span>
       </div>
-      <p class="loop-hint" id="loop-hint">Hover a number to explore each phase</p>
+      <div class="loop-progress"><div class="loop-progress-fill" id="loop-progress-fill"></div></div>
+      <p class="loop-hint" id="loop-hint">Auto-playing · Hover to explore</p>
     </div>
   </div>
 
@@ -434,6 +424,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </footer>
 
 <script>
+/* ── MARQUEE ─────────────────────────────────────────── */
 const LOGOS=[
   {src:'images/balasamoTchaw_logo.png',alt:'Bálsamo Tchakowski'},
   {src:'images/kevala_logo.png',alt:'Kevala'},
@@ -447,7 +438,10 @@ const LOGOS=[
   {src:'images/cloralen-may24-logo800-removebg-preview.png',alt:'Cloralen'},
   {src:'images/pro_logo.png',alt:'Piñalen Professional'},
 ];
+const mq=document.getElementById('mqt');
+if(mq){const b=LOGOS.map(l=>`<div class="mqi"><img src="${l.src}" alt="${l.alt}"/></div>`).join('');mq.innerHTML=b+b;}
 
+/* ── SERVICES ────────────────────────────────────────── */
 const SVCS=[
   {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P models on Amazon, Walmart, and major US marketplaces.',href:'services.html#digital-gtm'},
   {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and operational margin protection.',href:'services.html#backend-ops'},
@@ -456,24 +450,6 @@ const SVCS=[
   {ic:'M13 10V3L4 14h7v7l9-11h-7z',t:'Strategic Consulting',b:"Data-driven 'Where to Play' and 'How to Win' strategies focused on sustainable revenue acceleration.",href:'services.html#strategic-consulting'},
   {ic:'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',t:'Creative Strategy',b:'High-impact visual assets and storytelling designed to convert the US consumer at scale.',href:'services.html#creative-strategy'}
 ];
-
-const STEPS=[
-  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
-  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
-  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
-  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
-  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
-  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
-];
-
-// Marquee
-const mq=document.getElementById('mqt');
-if(mq){
-  const b=LOGOS.map(l=>`<div class="mqi"><img src="${l.src}" alt="${l.alt}"/></div>`).join('');
-  mq.innerHTML=b+b;
-}
-
-// Services
 const svcEl=document.getElementById('svc');
 if(svcEl) svcEl.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
   <svg class="svico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -483,60 +459,120 @@ if(svcEl) svcEl.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
   <h3>${s.t}</h3><p>${s.b}</p>
 </a>`).join('');
 
-// Growth Loop
+/* ── GROWTH LOOP ─────────────────────────────────────── */
+const STEPS=[
+  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
+  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
+  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
+  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
+  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
+  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
+];
+
 const dots=document.querySelectorAll('.ldot');
 const connLine=document.getElementById('conn-line');
 const loopSection=document.getElementById('loop-section');
 const loopPanel=document.getElementById('loop-panel');
+const progressFill=document.getElementById('loop-progress-fill');
+
+// build counter dots
+const counterEl=document.getElementById('loop-counter');
+STEPS.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='loop-counter-dot';
+  d.dataset.i=i;
+  d.onclick=()=>manualActivate(i);
+  counterEl.appendChild(d);
+});
+
 let loopTimeout=null;
+let autoInterval=null;
+let currentStep=0;
+let userControlled=false;
+const AUTO_DURATION=2600; // ms per step
 
 function drawConnector(dot){
   if(!connLine||!loopSection||!loopPanel)return;
   const sr=loopSection.getBoundingClientRect();
   const dr=dot.getBoundingClientRect();
   const pr=loopPanel.getBoundingClientRect();
-  // dot center relative to section
-  const x1=dr.left+dr.width/2-sr.left;
-  const y1=dr.top+dr.height/2-sr.top;
-  // panel left-center relative to section
-  const x2=pr.left-sr.left;
-  const y2=pr.top+pr.height/2-sr.top;
-  // curved path
+  const x1=dr.left+dr.width/2-sr.left,y1=dr.top+dr.height/2-sr.top;
+  const x2=pr.left-sr.left,y2=pr.top+pr.height/2-sr.top;
   const mx=(x1+x2)/2;
-  const path=`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
-  connLine.setAttribute('d',path);
+  connLine.setAttribute('d',`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
   connLine.classList.add('vis');
 }
 
-function activateLoopStep(i){
+function activateStep(i,auto=false){
+  currentStep=i;
   const s=STEPS[i];
   dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+  document.querySelectorAll('.loop-counter-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
 
   const hint=document.getElementById('loop-hint');
-  if(hint)hint.style.opacity='0';
-  const panel=document.getElementById('loop-panel');
-  const eye=document.getElementById('loop-panel-eye');
-  const title=document.getElementById('loop-panel-title');
-  const body=document.getElementById('loop-panel-body');
-  // draw connector from active dot
+  if(hint) hint.style.opacity=auto?'1':'0';
+
   drawConnector(dots[i]);
-  panel.classList.remove('vis');
+  loopPanel.classList.remove('vis');
   if(loopTimeout)clearTimeout(loopTimeout);
   loopTimeout=setTimeout(()=>{
-    eye.textContent=`0${s.n} — ${s.s}`;
-    eye.className='loop-panel-eye '+(s.c==='g'?'sg':'sb');
-    title.textContent=s.l;
-    body.textContent=s.b;
-    panel.classList.add('vis');
+    document.getElementById('loop-panel-eye').textContent=`0${s.n} — ${s.s}`;
+    document.getElementById('loop-panel-eye').className='loop-panel-eye '+(s.c==='g'?'sg':'sb');
+    document.getElementById('loop-panel-title').textContent=s.l;
+    document.getElementById('loop-panel-body').textContent=s.b;
+    loopPanel.classList.add('vis');
   },80);
+
+  // progress bar
+  if(progressFill){
+    progressFill.style.transition='none';
+    progressFill.style.width='0%';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      progressFill.style.transition=`width ${AUTO_DURATION}ms linear`;
+      progressFill.style.width='100%';
+    }));
+  }
+}
+
+function startAutoTour(){
+  if(autoInterval)clearInterval(autoInterval);
+  autoInterval=setInterval(()=>{
+    if(!userControlled){
+      currentStep=(currentStep+1)%STEPS.length;
+      activateStep(currentStep,true);
+    }
+  },AUTO_DURATION);
+}
+
+function manualActivate(i){
+  userControlled=true;
+  activateStep(i,false);
+  // resume auto after 6s of inactivity
+  clearTimeout(window._resumeAuto);
+  window._resumeAuto=setTimeout(()=>{userControlled=false;},6000);
 }
 
 dots.forEach((dot,i)=>{
-  dot.addEventListener('mouseenter',()=>activateLoopStep(i));
-  dot.addEventListener('click',()=>activateLoopStep(i));
+  dot.addEventListener('mouseenter',()=>manualActivate(i));
+  dot.addEventListener('click',()=>manualActivate(i));
 });
 
-// Scroll
+/* ── HERO PARALLAX ───────────────────────────────────── */
+const heroEl=document.getElementById('hero-section');
+const heroLogo=document.getElementById('hlw');
+if(heroEl&&heroLogo){
+  heroEl.addEventListener('mousemove',e=>{
+    const r=heroEl.getBoundingClientRect();
+    const cx=r.left+r.width/2,cy=r.top+r.height/2;
+    const dx=(e.clientX-cx)/r.width,dy=(e.clientY-cy)/r.height;
+    heroLogo.style.transform=`translate(${dx*18}px,${dy*12}px)`;
+  });
+  heroEl.addEventListener('mouseleave',()=>{
+    heroLogo.style.transform='translate(0,0)';
+  });
+}
+
+/* ── SCROLL ──────────────────────────────────────────── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',scrollY>40);
   triggerAll();
@@ -568,17 +604,18 @@ function triggerCounters(){
     }
   });
 }
-function triggerAll(){triggerFades();triggerKPIs();triggerCounters();triggerLoop();}
 
-let loopTriggered=false;
+let loopStarted=false;
 function triggerLoop(){
-  if(loopTriggered)return;
-  const section=document.querySelector('.loop-section');
+  if(loopStarted)return;
+  const section=document.getElementById('loop-section');
   if(section&&section.getBoundingClientRect().top<window.innerHeight-100){
-    loopTriggered=true;
-    activateLoopStep(0);
+    loopStarted=true;
+    activateStep(0,true);
+    startAutoTour();
   }
 }
+function triggerAll(){triggerFades();triggerKPIs();triggerCounters();triggerLoop();}
 
 ['hlw','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
