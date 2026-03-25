@@ -35,12 +35,10 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 /* HERO */
 .hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
-.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
-@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
-@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
+#globe-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero-content{position:relative;z-index:1}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:18px}
-.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:520px;line-height:1.7}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:520px;line-height:1.7;margin:0 auto}
 
 /* LAYOUT */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
@@ -65,8 +63,6 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .cs-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
 .cs-tab{padding:9px 20px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #1a1a1a;color:var(--tm);background:var(--s);transition:all .25s;font-family:inherit}
 .cs-tab.active{background:var(--grad);color:#fff;border-color:transparent}
-
-/* CASE STUDY CARD */
 .cs-panel{display:none}.cs-panel.active{display:block}
 .cs-card{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:36px;border-left:3px solid var(--g)}
 .cs-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;gap:20px;flex-wrap:wrap}
@@ -168,10 +164,11 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- HERO -->
 <div class="hero">
   <div class="dots"></div>
-  <div class="gl"></div>
-  <div class="gr"></div>
-  <div class="fu" id="h1w"><h1>Data Driven<br/>Dominance</h1></div>
-  <div class="fu" id="h2w"><p>We don't just deliver reports. We deliver returns.</p></div>
+  <canvas id="globe-canvas"></canvas>
+  <div class="hero-content">
+    <div class="fu" id="h1w"><h1>Data Driven<br/>Dominance</h1></div>
+    <div class="fu" id="h2w"><p>We don't just deliver reports. We deliver returns.</p></div>
+  </div>
 </div>
 
 <!-- IMPACT COUNTER -->
@@ -195,7 +192,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
       <div style="background:var(--s2);border:1px solid #1a1a1a;border-radius:14px;padding:28px;border-left:3px solid var(--g)">
         <p style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(16px,2vw,22px);color:#fff;line-height:1.4;margin-bottom:16px">"Their data driven strategy and listing optimization delivered consistent, sustainable growth in online sales."</p>
         <div style="display:flex;align-items:center;gap:10px">
-          <div class="testi-avatar" style="width:36px;height:36px;font-size:12px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;color:#fff;flex-shrink:0">AB</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:12px;color:#fff;flex-shrink:0">AB</div>
           <div>
             <div style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;color:#fff">Adam Berk</div>
             <div style="font-size:11px;color:var(--g);margin-top:1px">Menper</div>
@@ -223,17 +220,11 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     <div class="testi-grid">
       <div class="testi-card">
         <p class="testi-quote">"From day zero working with the Unlimitify team, our sales have been on a steady rise. Their expertise is clear when we look at the end of month numbers, and their support truly feels like having a real extension of our own team!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">EO</div>
-          <div><div class="testi-name">Evelyn Orduz</div><div class="testi-co">De Mi País</div></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">EO</div><div><div class="testi-name">Evelyn Orduz</div><div class="testi-co">De Mi País</div></div></div>
       </div>
       <div class="testi-card">
         <p class="testi-quote">"Unlimitify is a vital partner in our U.S. marketplace expansion. Their data driven strategy and listing optimization streamlined our operations, reduced headaches, and delivered consistent, sustainable growth in online sales."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">AB</div>
-          <div><div class="testi-name">Adam Berk</div><div class="testi-co">Menper</div></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">AB</div><div><div class="testi-name">Adam Berk</div><div class="testi-co">Menper</div></div></div>
       </div>
     </div>
   </div>
@@ -280,67 +271,103 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </footer>
 
 <script>
-const CASES=[
-  {
-    tab:'Rábano Yodado®',
-    product:'Rábano Yodado®',
-    client:'Portfolio Transformation — Menper Group',
-    result:'139% Revenue Surge',
-    phases:[
-      {label:'Stagnation',title:'$1.5K/week ceiling',body:'Undervalued at $5.19. Single-SKU dependency limiting scale.',blue:false},
-      {label:'The Pivot',title:'Multipacks + Overhaul',body:'High-value multipacks. Structured price increases for margin health.',blue:false},
-      {label:'Execution',title:'AOV $6 → $14.5',body:'+140% conversion boost. Efficient customer acquisition.',blue:false},
-      {label:'Dominance',title:'Top 5 Brand',body:'139% revenue surge in 60 days. Top 5 brand in Menper Group.',blue:true}
-    ],
-    chart:[1500,1700,2000,2400,3000,3800,4600,5400,6200,7100,8200,9400,10500]
-  },
-  {
-    tab:'US Market Entry',
-    product:'US Market Entry',
-    client:'CPG Brand — Zero to Launch',
-    result:'220% ROAS Improvement',
-    phases:[
-      {label:'Entry',title:'Zero US presence',body:'No Amazon account, no US listings, no localized creative.',blue:false},
-      {label:'Architecture',title:'Full ecosystem build',body:'Account setup, A+ content, brand store, keyword strategy.',blue:false},
-      {label:'Launch',title:'$0 → $45K/month',body:'Paid media deployed. ROAS of 4.2x in first 90 days.',blue:false},
-      {label:'Scale',title:'Category Leader',body:'220% ROAS improvement. Top-3 organic rank achieved.',blue:true}
-    ],
-    chart:[0,600,2000,3400,5600,8400,12500,18500,25000,32000,39000,45000,48000]
-  },
-  {
-    tab:'Hispanic Expansion',
-    product:'Hispanic Market Expansion',
-    client:'Category Domination Strategy',
-    result:'3.1x Revenue in 90 Days',
-    phases:[
-      {label:'Audit',title:'Category opportunity',body:'$2M+ TAM identified with weak incumbents.',blue:false},
-      {label:'Strategy',title:'Where to Play',body:"'Where to Play / How to Win' framework deployed.",blue:false},
-      {label:'Execution',title:'Dominate the niche',body:'Cultural authenticity drove exceptional conversion.',blue:false},
-      {label:'Result',title:'3.1x Revenue',body:'Category rank #1 achieved in 90 days.',blue:true}
-    ],
-    chart:[8000,8800,9800,11500,14000,16800,20500,23500,26000,29000,32500,36000,39000]
-  },
-  {
-    tab:'Back-End Optimization',
-    product:'Back-End Optimization',
-    client:'Margin Recovery & Efficiency',
-    result:'80% Efficiency Gain',
-    phases:[
-      {label:'Problem',title:'Margin erosion',body:'Chargeback rate 4.2%. Overhead consuming 35% of revenue.',blue:false},
-      {label:'Diagnosis',title:'Full ops audit',body:'Three major leakage points identified and mapped.',blue:false},
-      {label:'Fix',title:'Infrastructure rebuilt',body:'Chargeback recovery. Resource planning automation.',blue:false},
-      {label:'Result',title:'80% Efficiency',body:'Chargeback: 4.2%→0.4%. Overhead: 35%→7%.',blue:true}
-    ],
-    chart:[20000,21000,20500,22500,25000,27500,30500,33500,36500,39500,42500,45000,47500]
+/* ── GLOBE ───────────────────────────────────────────── */
+(function(){
+  const cv=document.getElementById('globe-canvas');
+  const cx=cv.getContext('2d');
+  let W,H;
+
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight}
+  resize();
+  window.addEventListener('resize',resize);
+
+  const GLOBE_R=155,GLOBE_NODES=220;
+  let rotY=0;
+
+  const globePts=(()=>{
+    const pts=[];
+    for(let i=0;i<GLOBE_NODES;i++){
+      const phi=Math.acos(-1+2*i/GLOBE_NODES);
+      const theta=Math.sqrt(GLOBE_NODES*Math.PI)*phi;
+      pts.push({lat:phi-Math.PI/2,lng:theta});
+    }
+    return pts;
+  })();
+
+  function project3D(lat,lng,ry){
+    const x=Math.cos(lat)*Math.cos(lng+ry);
+    const y=Math.sin(lat);
+    const z=Math.cos(lat)*Math.sin(lng+ry);
+    return {x,y,z};
   }
+
+  function globeColor(t,alpha){
+    const g=Math.round((1-t)*172+t*22);
+    const b=Math.round((1-t)*105+t*137);
+    return `rgba(0,${g},${b},${alpha})`;
+  }
+
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    const gx=W/2,gy=H/2;
+    const projected=globePts.map(p=>{
+      const v=project3D(p.lat,p.lng,rotY);
+      return {...v,sx:gx+v.x*GLOBE_R,sy:gy-v.y*GLOBE_R};
+    });
+
+    for(let i=0;i<projected.length;i++){
+      for(let j=i+1;j<projected.length;j++){
+        const a=projected[i],b=projected[j];
+        if(a.z<-0.05||b.z<-0.05)continue;
+        const dx=a.sx-b.sx,dy=a.sy-b.sy;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<42&&dist>1){
+          const t=(a.sx/W+b.sx/W)/2;
+          const alpha=(1-dist/42)*0.22*Math.max(0,Math.min(a.z,b.z)+0.5);
+          cx.beginPath();
+          cx.moveTo(a.sx,a.sy);
+          cx.lineTo(b.sx,b.sy);
+          cx.strokeStyle=globeColor(t,alpha);
+          cx.lineWidth=.8;
+          cx.stroke();
+        }
+      }
+    }
+
+    projected.forEach(p=>{
+      if(p.z<0)return;
+      const t=p.sx/W;
+      cx.beginPath();
+      cx.arc(p.sx,p.sy,p.z*2+0.8,0,Math.PI*2);
+      cx.fillStyle=globeColor(t,0.65*p.z+0.12);
+      cx.fill();
+    });
+
+    rotY+=0.0035;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── CASE STUDIES ────────────────────────────────────── */
+const CASES=[
+  {tab:'Rábano Yodado®',product:'Rábano Yodado®',client:'Portfolio Transformation — Menper Group',result:'139% Revenue Surge',
+   phases:[{label:'Stagnation',title:'$1.5K/week ceiling',body:'Undervalued at $5.19. Single-SKU dependency limiting scale.',blue:false},{label:'The Pivot',title:'Multipacks + Overhaul',body:'High-value multipacks. Structured price increases for margin health.',blue:false},{label:'Execution',title:'AOV $6 → $14.5',body:'+140% conversion boost. Efficient customer acquisition.',blue:false},{label:'Dominance',title:'Top 5 Brand',body:'139% revenue surge in 60 days. Top 5 brand in Menper Group.',blue:true}],
+   chart:[1500,1700,2000,2400,3000,3800,4600,5400,6200,7100,8200,9400,10500]},
+  {tab:'US Market Entry',product:'US Market Entry',client:'CPG Brand — Zero to Launch',result:'220% ROAS Improvement',
+   phases:[{label:'Entry',title:'Zero US presence',body:'No Amazon account, no US listings, no localized creative.',blue:false},{label:'Architecture',title:'Full ecosystem build',body:'Account setup, A+ content, brand store, keyword strategy.',blue:false},{label:'Launch',title:'$0 → $45K/month',body:'Paid media deployed. ROAS of 4.2x in first 90 days.',blue:false},{label:'Scale',title:'Category Leader',body:'220% ROAS improvement. Top-3 organic rank achieved.',blue:true}],
+   chart:[0,600,2000,3400,5600,8400,12500,18500,25000,32000,39000,45000,48000]},
+  {tab:'Hispanic Expansion',product:'Hispanic Market Expansion',client:'Category Domination Strategy',result:'3.1x Revenue in 90 Days',
+   phases:[{label:'Audit',title:'Category opportunity',body:'$2M+ TAM identified with weak incumbents.',blue:false},{label:'Strategy',title:'Where to Play',body:"'Where to Play / How to Win' framework deployed.",blue:false},{label:'Execution',title:'Dominate the niche',body:'Cultural authenticity drove exceptional conversion.',blue:false},{label:'Result',title:'3.1x Revenue',body:'Category rank #1 achieved in 90 days.',blue:true}],
+   chart:[8000,8800,9800,11500,14000,16800,20500,23500,26000,29000,32500,36000,39000]},
+  {tab:'Back-End Optimization',product:'Back-End Optimization',client:'Margin Recovery & Efficiency',result:'80% Efficiency Gain',
+   phases:[{label:'Problem',title:'Margin erosion',body:'Chargeback rate 4.2%. Overhead consuming 35% of revenue.',blue:false},{label:'Diagnosis',title:'Full ops audit',body:'Three major leakage points identified and mapped.',blue:false},{label:'Fix',title:'Infrastructure rebuilt',body:'Chargeback recovery. Resource planning automation.',blue:false},{label:'Result',title:'80% Efficiency',body:'Chargeback: 4.2%→0.4%. Overhead: 35%→7%.',blue:true}],
+   chart:[20000,21000,20500,22500,25000,27500,30500,33500,36500,39500,42500,45000,47500]}
 ];
 
 function buildChart(data,idx){
   const W=460,H=72,pd=8,mn=Math.min(...data),mx=Math.max(...data);
-  const pts=data.map((v,j)=>({
-    x:pd+(j/(data.length-1))*(W-pd*2),
-    y:H-pd-((v-mn)/(mx-mn||1))*(H-pd*2)
-  }));
+  const pts=data.map((v,j)=>({x:pd+(j/(data.length-1))*(W-pd*2),y:H-pd-((v-mn)/(mx-mn||1))*(H-pd*2)}));
   const poly=pts.map(p=>`${p.x},${p.y}`).join(' ');
   const fill=`${pts[0].x},${H-pd} `+pts.map(p=>`${p.x},${p.y}`).join(' ')+` ${pts[pts.length-1].x},${H-pd}`;
   return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:68px" preserveAspectRatio="none">
@@ -355,9 +382,7 @@ function buildChart(data,idx){
 
 const tabs=document.getElementById('cs-tabs');
 const panels=document.getElementById('cs-panels');
-
 CASES.forEach((c,i)=>{
-  // tab
   const tab=document.createElement('button');
   tab.className='cs-tab'+(i===0?' active':'');
   tab.textContent=c.tab;
@@ -369,34 +394,23 @@ CASES.forEach((c,i)=>{
   };
   tabs.appendChild(tab);
 
-  // panel
   const panel=document.createElement('div');
   panel.className='cs-panel'+(i===0?' active':'');
   panel.id='csp'+i;
   panel.innerHTML=`<div class="cs-card">
     <div class="cs-header">
-      <div>
-        <div class="cs-product">${c.product}</div>
-        <div class="cs-client">${c.client}</div>
-      </div>
+      <div><div class="cs-product">${c.product}</div><div class="cs-client">${c.client}</div></div>
       <div class="cs-badge">${c.result}</div>
     </div>
     <div class="cs-phases">
-      ${c.phases.map(p=>`<div class="cs-phase">
-        <div class="cs-phase-label${p.blue?' blue':''}">${p.label}</div>
-        <div class="cs-phase-title">${p.title}</div>
-        <div class="cs-phase-body">${p.body}</div>
-      </div>`).join('')}
+      ${c.phases.map(p=>`<div class="cs-phase"><div class="cs-phase-label${p.blue?' blue':''}">${p.label}</div><div class="cs-phase-title">${p.title}</div><div class="cs-phase-body">${p.body}</div></div>`).join('')}
     </div>
-    <div class="cs-chart-wrap">
-      <div class="cs-chart-label">Revenue trajectory</div>
-      ${buildChart(c.chart,i)}
-    </div>
+    <div class="cs-chart-wrap"><div class="cs-chart-label">Revenue trajectory</div>${buildChart(c.chart,i)}</div>
   </div>`;
   panels.appendChild(panel);
 });
 
-// Scroll & animations
+/* ── SCROLL & ANIMATIONS ─────────────────────────────── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',scrollY>40);
   triggerAll();
@@ -407,7 +421,6 @@ function triggerFades(){
     if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
   });
 }
-
 function triggerCounters(){
   document.querySelectorAll('.stat-num[data-target]:not([data-done])').forEach(el=>{
     if(el.getBoundingClientRect().top<window.innerHeight-40){
@@ -424,7 +437,6 @@ function triggerCounters(){
     }
   });
 }
-
 function triggerKPIs(){
   document.querySelectorAll('.kpi-fill:not([data-done])').forEach(el=>{
     if(el.getBoundingClientRect().top<window.innerHeight-40){
@@ -433,7 +445,6 @@ function triggerKPIs(){
     }
   });
 }
-
 function triggerAll(){triggerFades();triggerCounters();triggerKPIs();}
 
 ['h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
