@@ -33,14 +33,12 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 @media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
 
 /* HERO */
-.hero{min-height:48vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 52px}
+.hero{min-height:48vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 52px;cursor:none}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
-.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
-@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
-@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
+#particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-content{position:relative;z-index:1;pointer-events:none}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(30px,5.5vw,68px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:16px}
-.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:480px;line-height:1.7}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:480px;line-height:1.7;margin:0 auto}
 
 /* LAYOUT */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
@@ -55,12 +53,10 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .info-label{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
 .info-value{font-size:15px;color:var(--g);font-weight:500}
 .info-value.plain{color:var(--ts)}
-
 .stats-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px}
 .stat-chip{background:var(--s);border:1px solid #1a1a1a;border-radius:10px;padding:16px;text-align:center}
 .stat-chip-num{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 .stat-chip-label{font-size:10px;color:var(--tm);margin-top:5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
-
 .trust-row{display:flex;flex-direction:column;gap:10px;margin-top:28px}
 .trust-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ts)}
 .trust-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
@@ -144,28 +140,22 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px;margi
 </div>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="hero">
   <div class="dots"></div>
-  <div class="gl"></div>
-  <div class="gr"></div>
-  <div class="fu" id="h1w">
-    <h1>Let's Talk About<br/>Your Brand</h1>
-  </div>
-  <div class="fu" id="h2w">
-    <p>Tell us about your brand. We'll tell you exactly how to dominate the US market.</p>
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-content">
+    <div class="fu" id="h1w"><h1>Let's Talk About<br/>Your Brand</h1></div>
+    <div class="fu" id="h2w"><p>Tell us about your brand. We'll tell you exactly how to dominate the US market.</p></div>
   </div>
 </div>
 
 <!-- CONTACT SECTION -->
 <section class="fu" id="main-section">
   <div class="contact-grid">
-
-    <!-- LEFT: INFO -->
     <div>
       <div class="ey">Get in touch</div>
       <h2 class="st">Ready to<br/>Scale?</h2>
       <p style="font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:32px">No commitment. We'll analyze your brand's potential and show you exactly how we'd scale it in the US market — within 24 hours.</p>
-
       <div class="info-block">
         <div class="info-label">Email</div>
         <div class="info-value">sales@unlimitify.com</div>
@@ -187,27 +177,23 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px;margi
           const colors={'USA':'#00ac69','Canada':'#00ac69','Mexico':'#00ac69','Brazil':'#00ac69','Argentina':'#00ac69','Colombia':'#00ac69','Spain':'#4a7fff'};
           const centroids={'USA':[-100,38],'Canada':[-96,60],'Mexico':[-102,24],'Brazil':[-52,-10],'Argentina':[-65,-35],'Colombia':[-74,4],'Spain':[-3.5,40.5]};
           const labelOff={'USA':[8,-6],'Canada':[8,-7],'Mexico':[8,4],'Brazil':[8,4],'Argentina':[8,4],'Colombia':[8,-6],'Spain':[8,-6]};
-
           const svg=d3.select('#cov-map').append('svg').attr('viewBox','0 0 560 280').attr('width','100%');
           const proj=d3.geoNaturalEarth1().scale(95).translate([280,150]);
           const path=d3.geoPath(proj);
-
           d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world=>{
             const features=topojson.feature(world,world.objects.countries).features;
             svg.selectAll('path.c').data(features).join('path').attr('class','c').attr('d',path)
               .attr('fill',d=>{const n=countryIds[d.id];return n?(colors[n]+'22'):'#111'})
               .attr('stroke',d=>{const n=countryIds[d.id];return n?colors[n]:'#1e1e1e'})
               .attr('stroke-width',d=>countryIds[d.id]?1:0.3);
-
             Object.entries(centroids).forEach(([name,coords])=>{
-              const [cx,cy]=proj(coords);
+              const [cx2,cy]=proj(coords);
               const col=colors[name];
               const [ox,oy]=labelOff[name];
-              svg.append('circle').attr('cx',cx).attr('cy',cy).attr('r',9).attr('fill',col).attr('fill-opacity',0.12).attr('stroke',col).attr('stroke-width',0.5).attr('stroke-opacity',0.35);
-              svg.append('circle').attr('cx',cx).attr('cy',cy).attr('r',3.5).attr('fill',col);
-              svg.append('text').attr('x',cx+ox).attr('y',cy+oy).attr('fill','#fff').attr('font-size','7.5px').attr('font-family','Inter,sans-serif').attr('font-weight','600').attr('letter-spacing','0.03em').text(name);
+              svg.append('circle').attr('cx',cx2).attr('cy',cy).attr('r',9).attr('fill',col).attr('fill-opacity',0.12).attr('stroke',col).attr('stroke-width',0.5).attr('stroke-opacity',0.35);
+              svg.append('circle').attr('cx',cx2).attr('cy',cy).attr('r',3.5).attr('fill',col);
+              svg.append('text').attr('x',cx2+ox).attr('y',cy+oy).attr('fill','#fff').attr('font-size','7.5px').attr('font-family','Inter,sans-serif').attr('font-weight','600').attr('letter-spacing','0.03em').text(name);
             });
-
             const lg=svg.append('g').attr('transform','translate(16,268)');
             lg.append('circle').attr('cx',5).attr('cy',0).attr('r',3.5).attr('fill','#00ac69');
             lg.append('text').attr('x',12).attr('y',4).attr('fill','#555').attr('font-size','8px').attr('font-family','Inter,sans-serif').text('Americas');
@@ -220,88 +206,51 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px;margi
       </div>
 
       <div class="stats-strip">
-        <div class="stat-chip">
-          <div class="stat-chip-num">50+</div>
-          <div class="stat-chip-label">Brands Scaled</div>
-        </div>
-        <div class="stat-chip">
-          <div class="stat-chip-num">$150M+</div>
-          <div class="stat-chip-label">Revenue Managed</div>
-        </div>
-        <div class="stat-chip">
-          <div class="stat-chip-num">14</div>
-          <div class="stat-chip-label">Active Clients</div>
-        </div>
+        <div class="stat-chip"><div class="stat-chip-num">50+</div><div class="stat-chip-label">Brands Scaled</div></div>
+        <div class="stat-chip"><div class="stat-chip-num">$150M+</div><div class="stat-chip-label">Revenue Managed</div></div>
+        <div class="stat-chip"><div class="stat-chip-num">14</div><div class="stat-chip-label">Active Clients</div></div>
       </div>
-
       <div class="trust-row">
         <div class="trust-item"><div class="trust-dot"></div>No commitment required</div>
         <div class="trust-item"><div class="trust-dot"></div>Free brand audit included</div>
         <div class="trust-item"><div class="trust-dot"></div>Direct line to our founders</div>
-
       </div>
     </div>
 
-    <!-- RIGHT: FORM -->
+    <!-- FORM -->
     <div class="form-wrap">
       <form id="contact-form" action="https://formspree.io/f/mqegzree" method="POST" onsubmit="handleSubmit(event)">
         <input type="hidden" name="_subject" value="New Growth Audit Request — Unlimitify"/>
-
         <div class="form-row">
-          <div class="form-field">
-            <label>Full Name</label>
-            <input type="text" name="name" placeholder="John Smith" required/>
-          </div>
-          <div class="form-field">
-            <label>Company Name</label>
-            <input type="text" name="company" placeholder="Your Brand Inc." required/>
-          </div>
+          <div class="form-field"><label>Full Name</label><input type="text" name="name" placeholder="John Smith" required/></div>
+          <div class="form-field"><label>Company Name</label><input type="text" name="company" placeholder="Your Brand Inc." required/></div>
         </div>
-
-        <div class="form-field">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="john@yourbrand.com" required/>
-        </div>
-
+        <div class="form-field"><label>Email Address</label><input type="email" name="email" placeholder="john@yourbrand.com" required/></div>
         <div class="form-row">
           <div class="form-field">
             <label>Target Market</label>
             <select name="market" required>
               <option value="" disabled selected>Select…</option>
-              <option>USA</option>
-              <option>Mexico</option>
-              <option>Brazil</option>
-              <option>Canada</option>
-              <option>Spain</option>
-              <option>Argentina</option>
-              <option>Colombia</option>
-              <option>Other</option>
+              <option>USA</option><option>Mexico</option><option>Brazil</option>
+              <option>Canada</option><option>Spain</option><option>Argentina</option>
+              <option>Colombia</option><option>Other</option>
             </select>
           </div>
           <div class="form-field">
             <label>Monthly Revenue</label>
             <select name="revenue">
               <option value="" disabled selected>Select…</option>
-              <option>Under $10K</option>
-              <option>$10K – $50K</option>
-              <option>$50K – $200K</option>
-              <option>$200K – $1M</option>
-              <option>$1M+</option>
+              <option>Under $10K</option><option>$10K – $50K</option>
+              <option>$50K – $200K</option><option>$200K – $1M</option><option>$1M+</option>
             </select>
           </div>
         </div>
-
-        <div class="form-field">
-          <label>Main Challenge</label>
-          <textarea name="message" placeholder="Tell us about your brand and what's holding back your growth…" required></textarea>
-        </div>
-
+        <div class="form-field"><label>Main Challenge</label><textarea name="message" placeholder="Tell us about your brand and what's holding back your growth…" required></textarea></div>
         <button type="submit" class="form-submit" id="form-btn">GET MY FREE GROWTH AUDIT</button>
         <p class="form-status" id="form-status"></p>
         <p class="form-note">No commitment · Goes directly to sales@unlimitify.com</p>
       </form>
     </div>
-
   </div>
 </section>
 
@@ -318,12 +267,9 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px;margi
     </div>
     <div class="fcol">
       <h4>Navigate</h4>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About Us</a>
-      <a href="results.html">Results</a>
-      <a href="contact.html">Contact</a>
-      <a href="careers.html">Careers</a>
+      <a href="index.html">Home</a><a href="services.html">Services</a>
+      <a href="about.html">About Us</a><a href="results.html">Results</a>
+      <a href="contact.html">Contact</a><a href="careers.html">Careers</a>
     </div>
     <div class="fcol">
       <h4>Contact</h4>
@@ -338,13 +284,93 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px;margi
 </footer>
 
 <script>
+/* ── PARTICLE CURSOR ─────────────────────────────────── */
+(function(){
+  const cv=document.getElementById('particle-canvas');
+  const cx=cv.getContext('2d');
+  const hero=document.getElementById('hero');
+  let W,H,mouse={x:-999,y:-999};
+
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+
+  hero.addEventListener('mousemove',e=>{
+    const r=cv.getBoundingClientRect();
+    mouse.x=e.clientX-r.left;
+    mouse.y=e.clientY-r.top;
+  });
+  hero.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999;});
+
+  const COUNT=90;
+  function makeParticle(){
+    const t=Math.random();
+    const g=Math.round((1-t)*172+t*22);
+    const b=Math.round((1-t)*105+t*137);
+    const x=Math.random()*window.innerWidth;
+    const y=Math.random()*400;
+    return {x,y,ox:x,oy:y,vx:0,vy:0,r:1.2+Math.random()*1.8,color:`rgba(0,${g},${b},`};
+  }
+
+  const pts=Array.from({length:COUNT},makeParticle);
+
+  const ATTRACT_R=130,ATTRACT_F=0.012,RETURN_F=0.04,DAMPING=0.88;
+
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      const dx=mouse.x-p.x,dy=mouse.y-p.y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<ATTRACT_R&&mouse.x>0){
+        p.vx+=dx*ATTRACT_F;
+        p.vy+=dy*ATTRACT_F;
+      } else {
+        p.vx+=(p.ox-p.x)*RETURN_F;
+        p.vy+=(p.oy-p.y)*RETURN_F;
+      }
+      p.vx*=DAMPING; p.vy*=DAMPING;
+      p.x+=p.vx; p.y+=p.vy;
+
+      const proximity=mouse.x>0?Math.max(0,1-dist/ATTRACT_R):0;
+      const alpha=0.35+proximity*0.55;
+
+      cx.beginPath();
+      cx.arc(p.x,p.y,p.r*(1+proximity*0.6),0,Math.PI*2);
+      cx.fillStyle=p.color+alpha+')';
+      cx.fill();
+
+      if(proximity>0.3){
+        cx.beginPath();
+        cx.moveTo(p.x,p.y);
+        cx.lineTo(mouse.x,mouse.y);
+        cx.strokeStyle=p.color+(proximity*0.12)+')';
+        cx.lineWidth=0.6;
+        cx.stroke();
+      }
+    });
+
+    if(mouse.x>0){
+      cx.beginPath();
+      cx.arc(mouse.x,mouse.y,5,0,Math.PI*2);
+      cx.fillStyle='rgba(0,172,105,0.6)';
+      cx.fill();
+      cx.beginPath();
+      cx.arc(mouse.x,mouse.y,2,0,Math.PI*2);
+      cx.fillStyle='rgba(255,255,255,0.9)';
+      cx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── FORM ────────────────────────────────────────────── */
 async function handleSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('form-btn');
   const status=document.getElementById('form-status');
   const form=document.getElementById('contact-form');
-  btn.textContent='Sending…';
-  btn.disabled=true;
+  btn.textContent='Sending…';btn.disabled=true;
   try{
     const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
     if(res.ok){
@@ -361,17 +387,16 @@ async function handleSubmit(e){
   }
 }
 
+/* ── SCROLL & FADES ──────────────────────────────────── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',scrollY>40);
   triggerFades();
 });
-
 function triggerFades(){
   document.querySelectorAll('.fu:not(.on)').forEach(el=>{
     if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
   });
 }
-
 ['h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerFades,300);
 </script>
