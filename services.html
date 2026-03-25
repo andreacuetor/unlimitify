@@ -36,13 +36,10 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 /* HERO */
 .hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:100px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.gl{position:absolute;left:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,172,105,.16) 0%,transparent 68%);animation:pG 5s ease-in-out infinite alternate;pointer-events:none}
-.gr{position:absolute;right:-8%;top:8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,22,137,.18) 0%,transparent 68%);animation:pB 5s ease-in-out infinite alternate;pointer-events:none}
-@keyframes pG{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
-@keyframes pB{from{opacity:.8;transform:scale(1.05)}to{opacity:.5;transform:scale(.95)}}
-.hero-logo{width:min(200px,46vw);margin-bottom:32px}
+#grid-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero-content{position:relative;z-index:1}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:20px}
-.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:540px;line-height:1.7;margin-bottom:36px}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:540px;line-height:1.7;margin:0 auto 36px}
 
 /* BUTTONS */
 .bp{background:var(--grad);color:#fff;border:none;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:opacity .2s;text-decoration:none;display:inline-block}
@@ -109,13 +106,9 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 @keyframes lglow{from{opacity:.7}to{opacity:1}}
 .loop-center{position:relative;width:100%;aspect-ratio:1/1;max-width:560px;margin:0 auto;z-index:1}
 .loop-center img{width:100%;height:100%;object-fit:contain;display:block}
-
-/* CONNECTOR */
 .loop-connector{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}
 .loop-connector-line{fill:none;stroke:url(#connGrad);stroke-width:1.5;stroke-dasharray:5 4;opacity:0;transition:opacity .5s;stroke-linecap:round}
 .loop-connector-line.vis{opacity:.55}
-
-/* DOTS */
 .ldot{position:absolute;width:32px;height:32px;border-radius:50%;cursor:pointer;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:12px;color:#fff;border:1.5px solid rgba(255,255,255,.15);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s}
 .ldot::after{content:'';position:absolute;inset:-6px;border-radius:50%;opacity:.12;animation:ldpulse 2.5s ease-in-out infinite;z-index:-1;pointer-events:none}
 .ldot[data-i="0"]{background:linear-gradient(135deg,#00ac69,#009980)}.ldot[data-i="0"]::after{background:#00ac69}
@@ -132,8 +125,6 @@ section{padding:96px 48px;max-width:1280px;margin:0 auto}
 .ldot[data-i="4"]:hover,.ldot[data-i="4"].active{box-shadow:0 0 16px 5px rgba(0,47,163,.5)}
 .ldot[data-i="5"]:hover,.ldot[data-i="5"].active{box-shadow:0 0 16px 5px rgba(0,22,137,.5)}
 @keyframes ldpulse{0%,100%{transform:scale(1);opacity:.12}50%{transform:scale(2.2);opacity:.03}}
-
-/* LOOP PANEL */
 .loop-panel{z-index:1;display:flex;flex-direction:column}
 .loop-panel-inner{background:var(--s);border:1px solid #1a1a1a;border-radius:16px;padding:28px 32px;position:relative;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1)}
 .loop-panel-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
@@ -164,13 +155,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 .fu.on{opacity:1;transform:none}
 .section-anchor{scroll-margin-top:88px}
 
-@media(max-width:960px){
-  .loop-section{grid-template-columns:1fr;gap:32px}
-  .loop-center{max-width:340px}
-  .loop-panel-title{min-height:auto}
-  .loop-panel-body{min-height:auto}
-}
-@media(max-width:860px){.nav-center{display:none}.hamburger{display:flex}.ncta{display:none}}
+@media(max-width:960px){.loop-section{grid-template-columns:1fr;gap:32px}.loop-center{max-width:340px}.loop-panel-title{min-height:auto}.loop-panel-body{min-height:auto}}
 @media(max-width:768px){
   section,.fi,.fcta,footer{padding-left:20px;padding-right:20px}
   .svgrid,.diff-grid,.detail-grid{grid-template-columns:1fr}
@@ -222,16 +207,14 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- HERO -->
 <div class="hero">
   <div class="dots"></div>
-  <div class="gl"></div>
-  <div class="gr"></div>
-  <div class="hero-logo fu" id="hl">
-    <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Loop" style="width:100%;display:block"/>
-  </div>
-  <div class="fu" id="h1w"><h1 style="font-size:clamp(32px,6vw,68px)">The Engine of<br/>Your Expansion</h1></div>
-  <div class="fu" id="h2w"><p>Six full-service pillars designed to take your brand from market entry to category dominance in the US.</p></div>
-  <div class="fu" id="hbw" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
-    <a class="bp" href="contact.html">GET STARTED</a>
-    <a class="bg" href="#services-overview">SEE ALL SERVICES</a>
+  <canvas id="grid-canvas"></canvas>
+  <div class="hero-content">
+    <div class="fu" id="h1w"><h1 style="font-size:clamp(32px,6vw,68px)">The Engine of<br/>Your Expansion</h1></div>
+    <div class="fu" id="h2w"><p>Six full-service pillars designed to take your brand from market entry to category dominance in the US.</p></div>
+    <div class="fu" id="hbw" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+      <a class="bp" href="contact.html">GET STARTED</a>
+      <a class="bg" href="#services-overview">SEE ALL SERVICES</a>
+    </div>
   </div>
 </div>
 
@@ -451,12 +434,9 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
     </div>
     <div class="fcol">
       <h4>Navigate</h4>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About Us</a>
-      <a href="results.html">Results</a>
-      <a href="contact.html">Contact</a>
-      <a href="careers.html">Careers</a>
+      <a href="index.html">Home</a><a href="services.html">Services</a>
+      <a href="about.html">About Us</a><a href="results.html">Results</a>
+      <a href="contact.html">Contact</a><a href="careers.html">Careers</a>
     </div>
     <div class="fcol">
       <h4>Contact</h4>
@@ -471,6 +451,65 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 </footer>
 
 <script>
+/* ── GRID CANVAS ─────────────────────────────────────── */
+(function(){
+  const cv=document.getElementById('grid-canvas');
+  const cx=cv.getContext('2d');
+  let W,H;
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+
+  const COLS=10,ROWS=6;
+
+  function draw(ts){
+    cx.clearRect(0,0,W,H);
+    const t=ts*0.00035;
+    const cw=W/(COLS-1),rh=H/(ROWS-1);
+
+    for(let c=0;c<COLS;c++){
+      const x=c*cw;
+      const breathe=Math.sin(t+c*0.45)*0.5+0.5;
+      const colT=c/(COLS-1);
+      const g=Math.round((1-colT)*172+colT*22);
+      const b=Math.round((1-colT)*105+colT*137);
+      cx.beginPath();
+      cx.moveTo(x,0);cx.lineTo(x,H);
+      cx.strokeStyle=`rgba(0,${g},${b},${0.07+breathe*0.16})`;
+      cx.lineWidth=0.9;cx.stroke();
+    }
+
+    for(let r=0;r<ROWS;r++){
+      const y=r*rh;
+      const breathe=Math.sin(t*0.7+r*0.7)*0.5+0.5;
+      const rowT=r/(ROWS-1);
+      const g=Math.round((1-rowT)*172+rowT*22);
+      const b=Math.round((1-rowT)*105+rowT*137);
+      cx.beginPath();
+      cx.moveTo(0,y);cx.lineTo(W,y);
+      cx.strokeStyle=`rgba(0,${g},${b},${0.06+breathe*0.12})`;
+      cx.lineWidth=0.8;cx.stroke();
+    }
+
+    for(let c=0;c<COLS;c++){
+      for(let r=0;r<ROWS;r++){
+        const x=c*cw,y=r*rh;
+        const breathe=Math.sin(t+c*0.45+r*0.7)*0.5+0.5;
+        const colT=c/(COLS-1);
+        const g=Math.round((1-colT)*172+colT*22);
+        const b=Math.round((1-colT)*105+colT*137);
+        cx.beginPath();
+        cx.arc(x,y,1.2+breathe*1.4,0,Math.PI*2);
+        cx.fillStyle=`rgba(0,${g},${b},${0.08+breathe*0.3})`;
+        cx.fill();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ── SERVICE CARDS ───────────────────────────────────── */
 const SVCS=[
   {ic:'M3 3h18v3H3zM3 8h12v3H3zM3 13h15v3H3z',t:'Digital Go to Market',b:'Expert account setup and multi-channel integration for 1P and 3P on Amazon, Walmart, and major US marketplaces.',href:'#digital-gtm'},
   {ic:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',t:'Back-End Operations',b:'Seamless infrastructure management: chargeback recovery, resource planning, and margin protection.',href:'#backend-ops'},
@@ -480,16 +519,6 @@ const SVCS=[
   {ic:'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',t:'Creative Strategy',b:'High-impact visual assets and storytelling designed to convert the US consumer at scale.',href:'#creative-strategy'}
 ];
 
-const STEPS=[
-  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
-  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
-  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
-  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
-  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
-  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
-];
-
-// Service cards
 const sg=document.getElementById('svc-grid');
 if(sg) sg.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
   <svg class="svico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -500,23 +529,29 @@ if(sg) sg.innerHTML=SVCS.map((s,i)=>`<a class="svcard" href="${s.href}">
   <div class="sv-arrow">EXPLORE ↓</div>
 </a>`).join('');
 
-// Growth Loop
+/* ── GROWTH LOOP ─────────────────────────────────────── */
+const STEPS=[
+  {n:1,l:'Market Understanding',c:'g',s:'Foundation',b:'Deep opportunity audits analyzing category dynamics, competitor weaknesses, and consumer behavior to identify your strategic entry point.'},
+  {n:2,l:'Content Creation',c:'g',s:'Creative',b:'High-impact visual assets and storytelling designed to convert the US consumer — listings, A+ content, video, brand store.'},
+  {n:3,l:'Advertising Investment',c:'g',s:'Growth',b:'Data-driven paid media architecture across Amazon, Meta, and Google. We deploy capital where it wins, not where it looks good.'},
+  {n:4,l:'Monitoring & Analysis',c:'b',s:'Intelligence',b:'Real-time dashboards tracking ROAS, market share, and conversion rate. We catch signals before they become problems.'},
+  {n:5,l:'Expansion & Defense',c:'b',s:'Scale',b:'We scale horizontally — new SKUs, adjacent categories, and marketplace diversification while protecting your position.'},
+  {n:6,l:'Market Renewal',c:'b',s:'Loop',b:'Markets evolve. We continuously re-audit, refresh creative, and realign strategy. Then the loop begins again.'}
+];
+
 const dots=document.querySelectorAll('.ldot');
 const connLine=document.getElementById('conn-line');
 const loopSection=document.getElementById('loop-section');
 const loopPanelEl=document.getElementById('loop-panel');
-let loopTimeout=null;
-let loopTriggered=false;
+let loopTimeout=null,loopTriggered=false;
 
 function drawConnector(dot){
   if(!connLine||!loopSection||!loopPanelEl)return;
   const sr=loopSection.getBoundingClientRect();
   const dr=dot.getBoundingClientRect();
   const pr=loopPanelEl.getBoundingClientRect();
-  const x1=dr.left+dr.width/2-sr.left;
-  const y1=dr.top+dr.height/2-sr.top;
-  const x2=pr.left-sr.left;
-  const y2=pr.top+pr.height/2-sr.top;
+  const x1=dr.left+dr.width/2-sr.left,y1=dr.top+dr.height/2-sr.top;
+  const x2=pr.left-sr.left,y2=pr.top+pr.height/2-sr.top;
   const mx=(x1+x2)/2;
   connLine.setAttribute('d',`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
   connLine.classList.add('vis');
@@ -558,7 +593,7 @@ window.addEventListener('resize',()=>{
   if(activeDot)drawConnector(activeDot);
 });
 
-// Scroll
+/* ── SCROLL & ANIMATIONS ─────────────────────────────── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',scrollY>40);
   triggerAll();
@@ -569,7 +604,6 @@ function triggerFades(){
     if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('on');
   });
 }
-
 function triggerCounters(){
   document.querySelectorAll('.snum[data-target]:not([data-done])').forEach(el=>{
     if(el.getBoundingClientRect().top<window.innerHeight-40){
@@ -586,10 +620,9 @@ function triggerCounters(){
     }
   });
 }
-
 function triggerAll(){triggerFades();triggerCounters();triggerLoop();}
 
-['hl','h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
+['h1w','h2w','hbw'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
 </script>
 </body>
