@@ -172,10 +172,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <div class="hero">
   <div class="dots"></div>
   <canvas id="wave-canvas"></canvas>
-  <div class="hero-content">
-    <div class="hero-logo fu" id="hl">
-      <img src="./images/Icon_Color_Inv.png" alt="Unlimitify Loop" style="width:100%;display:block"/>
-    </div>
+      <div class="hero-content">
     <div class="fu" id="h1w"><h1>From Local Expert<br/>to US Market Leader</h1></div>
     <div class="fu" id="h2w"><p>The bridge between your brand and 330 million consumers.</p></div>
   </div>
@@ -413,7 +410,7 @@ function triggerCounters(){
 }
 function triggerAll(){triggerFades();triggerCounters();}
 
-['hl','h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
+['h1w','h2w'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('on'),200+i*140));
 setTimeout(triggerAll,300);
 </script>
 </body>
