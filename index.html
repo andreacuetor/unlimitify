@@ -35,7 +35,7 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:80px 24px 60px}
 .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-.hero-logo{width:min(520px,86vw);margin-bottom:44px;will-change:transform;transition:transform .1s linear}
+.hero-logo{width:min(680px,92vw);margin-bottom:44px;will-change:transform;transition:transform .1s linear}
 .hero h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(38px,7vw,88px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:#fff;margin-bottom:20px}
 .hero p{font-size:clamp(15px,2vw,18px);color:var(--ts);max-width:540px;line-height:1.7;margin-bottom:36px}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
@@ -53,9 +53,9 @@ nav.sc{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px s
 .mqt{display:flex;animation:mq 40s linear infinite;white-space:nowrap;align-items:center}
 .mqt:hover{animation-play-state:paused}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mqi{flex-shrink:0;padding:0 44px;border-right:1px solid rgba(255,255,255,.06);opacity:.75;transition:opacity .3s;display:flex;align-items:center;justify-content:center;height:64px}
+.mqi{flex-shrink:0;width:160px;border-right:1px solid rgba(255,255,255,.06);opacity:.75;transition:opacity .3s;display:flex;align-items:center;justify-content:center;height:64px}
 .mqi:hover{opacity:1}
-.mqi img{height:36px;width:auto;max-width:120px;object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
+.mqi img{width:110px;height:48px;object-fit:contain;display:block;filter:brightness(0) invert(1) opacity(0.85)}
 
 /* SECTIONS */
 section{padding:96px 48px;max-width:1280px;margin:0 auto}
@@ -244,7 +244,7 @@ footer{background:#080808;border-top:1px solid #111;padding:52px 48px 28px}
 <!-- HERO -->
 <div class="hero" id="hero-section">
   <div class="dots"></div>
-  <div class="hero-logo fu" id="hlw" style="-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 55%,transparent 100%)">
+  <div class="hero-logo fu" id="hlw" style="-webkit-mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,#000 30%,transparent 72%);mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,#000 30%,transparent 72%)">
     <video autoplay loop muted playsinline style="width:100%;display:block;mix-blend-mode:screen">
       <source src="./images/Animacion_Loop.mp4" type="video/mp4"/>
     </video>
